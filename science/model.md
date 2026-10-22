@@ -9,8 +9,8 @@ All registers are finite dimensional for each protocol instance. Their dimension
 For a register of $`k`$ qubits, let
 
 ```math
-\operatorname{STAB}_k
-=\operatorname{conv}\left\{
+\mathrm{STAB}_k
+=\mathrm{conv}\left\{
   |s\rangle\langle s|:\ |s\rangle
   \text{ is a pure }k\text{-qubit stabilizer state}
 \right\}.
@@ -21,9 +21,9 @@ The number of qubits is omitted when the register is unambiguous. This set is cl
 A quantum channel $`\Lambda_{AC\to BC}`$ is **completely stabilizer preserving** if, for every auxiliary qubit register $`R`$,
 
 ```math
-(\operatorname{id}_R\otimes\Lambda)
-\bigl(\operatorname{STAB}(RAC)\bigr)
-\subseteq \operatorname{STAB}(RBC).
+(\mathrm{id}_R\otimes\Lambda)
+\bigl(\mathrm{STAB}(RAC)\bigr)
+\subseteq \mathrm{STAB}(RBC).
 ```
 
 The converse allows all such completely positive, trace-preserving maps. Complete preservation matters: during repeated use, old output registers can remain entangled with $`C`$ while the next channel acts on $`AC`$. Preservation of free states on $`AC`$ alone would not justify the resource comparison for this larger joint system.
@@ -48,9 +48,9 @@ Let $`A`$ be the fresh source register, $`B`$ the emitted target register, and $
 For a pure target $`\psi_B=|\psi\rangle\langle\psi|`$ and a specified error tolerance $`\varepsilon\in[0,1]`$, a stationary call satisfies
 
 ```math
-\operatorname{Tr}_B\omega_{BC}=\tau_C,
+\mathrm{Tr}_B\omega_{BC}=\tau_C,
 \qquad
-\operatorname{Tr}(\psi_B\omega_B)\ge 1-\varepsilon.
+\mathrm{Tr}(\psi_B\omega_B)\ge 1-\varepsilon.
 \tag{M1}
 ```
 
@@ -93,7 +93,7 @@ The source condition is the operator inequality
 ```math
 \chi_A\succeq w\,\sigma_{0,A},
 \qquad
-\sigma_{0,A}\in\operatorname{STAB}(A),
+\sigma_{0,A}\in\mathrm{STAB}(A),
 \qquad
 0<w\le 1,
 \tag{M3}
@@ -148,8 +148,8 @@ For a pure target on $`b`$ qubits define
 ```math
 b_L
 =F_{\mathrm{STAB}}(\psi^{\otimes L})
-:=\max_{\sigma\in\operatorname{STAB}_{bL}}
-\operatorname{Tr}\!\left(\psi^{\otimes L}\sigma\right).
+:=\max_{\sigma\in\mathrm{STAB}_{bL}}
+\mathrm{Tr}\!\left(\psi^{\otimes L}\sigma\right).
 \tag{M5}
 ```
 
@@ -180,11 +180,11 @@ The relative entropy of magic, in bits, is
 
 ```math
 E_R(\tau_C)
-=\min_{\sigma_C\in\operatorname{STAB}(C)}
+=\min_{\sigma_C\in\mathrm{STAB}(C)}
 D(\tau_C\Vert\sigma_C),
 \qquad
 D(\rho\Vert\sigma)
-=\operatorname{Tr}\rho(\log_2\rho-\log_2\sigma).
+=\mathrm{Tr}\rho(\log_2\rho-\log_2\sigma).
 \tag{M7}
 ```
 
@@ -236,7 +236,7 @@ The converse allows an arbitrary initial $`\tau`$, even one prepared with extern
 The resource question is whether bounded fresh noisy input per emission can coexist with bounded reusable quantum memory as the emitted pure-state approximation improves. The converse shows that a positive free component in the source forces increasing stored magic when the target tensor powers have exponentially decreasing stabilizer overlap.
 
 The memory count is a logical persistent quantum-register count. It is not an estimate of fault-tolerant physical qubits, temporary peak workspace, Clifford gate count, classical decoding time, or throughput. Ideal free operations are assumed. The output criterion is state overlap infidelity,
-$`1-\operatorname{Tr}(\psi\omega_B)`$; it is not an automatic diamond-norm guarantee for an injected gate. A trace-distance guarantee
+$`1-\mathrm{Tr}(\psi\omega_B)`$; it is not an automatic diamond-norm guarantee for an injected gate. A trace-distance guarantee
 $`\tfrac12\|\omega_B-\psi\|_1\le\varepsilon`$
 does imply the overlap guarantee in (M1).
 

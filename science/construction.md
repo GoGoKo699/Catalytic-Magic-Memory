@@ -23,7 +23,7 @@ Fix a depolarizing mixture parameter $`\lambda>0`$ and supply independent copies
 The source infidelity is
 
 ```math
-p=1-\operatorname{Tr}(\psi\rho_\lambda)=\frac{7\lambda}{8}.
+p=1-\mathrm{Tr}(\psi\rho_\lambda)=\frac{7\lambda}{8}.
 ```
 
 Thus $`p`$ is the probability of a nontrivial error in the orthogonal CCZ basis; it is not the depolarizing mixture parameter $`\lambda`$. Indeed, with $`Z^{\mathbf b}=Z^{b_1}\otimes Z^{b_2}\otimes Z^{b_3}`$,
@@ -61,7 +61,7 @@ such that, for every $`0<\epsilon<1`$, a deterministic stabilizer channel $`\Lam
 \qquad
 \omega_A=\tau_\epsilon,
 \qquad
-1-\operatorname{Tr}(\psi\omega_S)\le\epsilon.
+1-\mathrm{Tr}(\psi\omega_S)\le\epsilon.
 ```
 
 The catalyst uses $`q=O(1+\log(1/\epsilon))`$ quantum qubits and $`b=O(1+\log\log(1/\epsilon))`$ classical bits as $`\epsilon`$ becomes small. The precise finite bounds below avoid the interpretation of the latter expression near $`\epsilon=1`$. Preparing the catalyst consumes $`O(1+\log(1/\epsilon))`$ additional copies of the same source, once at initialization.
@@ -146,7 +146,7 @@ On every correctable error pattern, the whole ideal output is $`\psi^{\otimes M}
 ```math
 \epsilon_g
 :=
-1-\operatorname{Tr}(\psi^{\otimes M}\eta_M)
+1-\mathrm{Tr}(\psi^{\otimes M}\eta_M)
 \le
 \binom{N}{t+1}(Cp)^{t+1}.
 \tag{1}
@@ -181,9 +181,9 @@ The condition $`p<p_*`$ is precisely what makes $`\beta`$ positive. This is an e
 For each marginal $`\eta_j`$ of $`\eta_M`$,
 
 ```math
-1-\operatorname{Tr}(\psi\eta_j)
+1-\mathrm{Tr}(\psi\eta_j)
 \le
-1-\operatorname{Tr}(\psi^{\otimes M}\eta_M)
+1-\mathrm{Tr}(\psi^{\otimes M}\eta_M)
 \le\epsilon_g.
 \tag{3}
 ```
@@ -252,7 +252,7 @@ For $`0\le s\le M`$, write
 ```math
 \widehat\eta_{1:s}
 :=
-\operatorname{Tr}_{s+1,\ldots,M}(\widehat\eta_M),
+\mathrm{Tr}_{s+1,\ldots,M}(\widehat\eta_M),
 \qquad
 \widehat\eta_{1:0}:=1.
 ```
@@ -313,7 +313,7 @@ For $`j=1`$, this is the freshly distilled batch. For $`j>1`$, it is the branch 
 Tracing out the last quantum block in (6) gives
 
 ```math
-\operatorname{Tr}_{\mathrm{last}}\Omega_g
+\mathrm{Tr}_{\mathrm{last}}\Omega_g
 =
 \frac1M\sum_{j=1}^{M}
 \zeta^{\otimes(j-1)}
@@ -338,10 +338,10 @@ After removing padding, the emitted state is
 Combining (3) and linearity of overlap with a pure target,
 
 ```math
-1-\operatorname{Tr}(\psi\omega_S)
+1-\mathrm{Tr}(\psi\omega_S)
 =
 \frac1M\sum_{s=1}^{M}
-\left[1-\operatorname{Tr}(\psi\eta_s)\right]
+\left[1-\mathrm{Tr}(\psi\eta_s)\right]
 \le\epsilon_g.
 \tag{9}
 ```
@@ -445,7 +445,7 @@ classical phase bits. Equations (14) and (15) are finite bounds valid across the
 Throughout this page, error means pure-target infidelity
 
 ```math
-e_\psi(\rho)=1-\operatorname{Tr}(\psi\rho).
+e_\psi(\rho)=1-\mathrm{Tr}(\psi\rho).
 ```
 
 [FL2026] states its catalytic theorem with trace distance. Equations (5)–(8) are exact state identities, so applying them directly gives the infidelity result (9) without changing the error parameter.
@@ -482,7 +482,7 @@ Thus the same fixed source and input budget have free-domination weight $`w=\lam
 
 ```math
 \max_{\sigma\in\mathrm{STAB}}
-\operatorname{Tr}(\psi^{\otimes L}\sigma)
+\mathrm{Tr}(\psi^{\otimes L}\sigma)
 =\left(\frac9{16}\right)^L
 ```
 

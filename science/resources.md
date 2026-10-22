@@ -140,7 +140,7 @@ Exact return means that the density operator on the retained catalyst register, 
 For $`L`$ retained outputs with individual infidelities at most $`\epsilon`$, the elementary commuting-projector union bound gives
 
 ```math
-1-\operatorname{Tr}(\psi^{\otimes L}\omega_{S_1\cdots S_L})
+1-\mathrm{Tr}(\psi^{\otimes L}\omega_{S_1\cdots S_L})
 \le L\epsilon.
 ```
 

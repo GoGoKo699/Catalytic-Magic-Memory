@@ -10,10 +10,10 @@ Let $`\chi_A`$ be the fixed fresh source block, $`\tau_C`$ the complete persiste
 $`\Lambda_{AC\to BC}`$ a channel satisfying
 
 ```math
-\operatorname{Tr}_B\Lambda(\chi_A\otimes\tau_C)=\tau_C,
+\mathrm{Tr}_B\Lambda(\chi_A\otimes\tau_C)=\tau_C,
 \qquad
-\operatorname{Tr}\!\left[
-\psi_B\,\operatorname{Tr}_C\Lambda(\chi_A\otimes\tau_C)
+\mathrm{Tr}\!\left[
+\psi_B\,\mathrm{Tr}_C\Lambda(\chi_A\otimes\tau_C)
 \right]\ge1-\varepsilon,
 \tag{1}
 ```
@@ -23,7 +23,7 @@ where $`\psi_B=|\psi\rangle\langle\psi|`$ is pure. Suppose that
 ```math
 \chi_A\succeq w\,\sigma_{0,A},
 \qquad
-\sigma_{0,A}\in\operatorname{STAB}(A),
+\sigma_{0,A}\in\mathrm{STAB}(A),
 \qquad
 0<w\le1.
 \tag{2}
@@ -34,8 +34,8 @@ Write
 ```math
 R=E_R(\tau_C),
 \qquad
-b_L=\max_{\sigma\in\operatorname{STAB}(B^L)}
-\operatorname{Tr}(\psi^{\otimes L}\sigma),
+b_L=\max_{\sigma\in\mathrm{STAB}(B^L)}
+\mathrm{Tr}(\psi^{\otimes L}\sigma),
 \qquad
 \delta_L=L\varepsilon w^{-L}.
 \tag{3}
@@ -62,23 +62,23 @@ with their continuous endpoint conventions.
 
 For every positive integer $`L`$:
 
-1. If $`1-\delta_L\ge b_L`$, then
+**(i)** If $`1-\delta_L\ge b_L`$, then
 
-   ```math
-   \boxed{R\ge d_2(1-\delta_L\Vert b_L).}
-   \tag{5}
-   ```
+```math
+\boxed{R\ge d_2(1-\delta_L\Vert b_L).}
+\tag{5}
+```
 
-2. If $`\delta_L\le1/2`$, then
+**(ii)** If $`\delta_L\le1/2`$, then
 
-   ```math
-   \boxed{
-   R\ge
-   (1-\delta_L)\log_2\frac1{b_L}
-   -h_2(\delta_L).
-   }
-   \tag{6}
-   ```
+```math
+\boxed{
+R\ge
+(1-\delta_L)\log_2\frac1{b_L}
+-h_2(\delta_L).
+}
+\tag{6}
+```
 
 Suppose, additionally, that a fixed $`f\in(0,1)`$ satisfies $`b_L\le f^L`$ for every $`L`$, and put $`c=\log_2(1/f)`$. Then (6) implies
 
@@ -105,14 +105,14 @@ The hypotheses of (5) and (6) differ. In particular, (6) remains valid if $`1-\d
 Start from $`\chi_{A_1}\otimes\cdots\otimes\chi_{A_L}\otimes\tau_C`$. Apply $`\Lambda`$ in order to $`A_1C,\ldots,A_LC`$, keeping all previous output registers. Let
 $`\widehat\Omega^{\mathrm{nom}}_{B_1\cdots B_LC}`$
 be the resulting joint state and let
-$`\Omega^{\mathrm{nom}}_L=\operatorname{Tr}_C\widehat\Omega^{\mathrm{nom}}`$.
+$`\Omega^{\mathrm{nom}}_L=\mathrm{Tr}_C\widehat\Omega^{\mathrm{nom}}`$.
 
 We first show inductively that, immediately after every call, the marginal on $`C`$ is $`\tau_C`$. It holds initially by construction. If it holds after call $`i-1`$, the untouched fresh register $`A_i`$ is independent of the entire past. Thus its reduced joint state with $`C`$ is exactly $`\chi_A\otimes\tau_C`$. Applying (1) gives the same returned marginal $`\tau_C`$ and an output $`B_i`$ with infidelity at most $`\varepsilon`$.
 
 This argument uses only the reduced state on $`A_iC`$. It remains valid when $`C`$ is correlated with $`B_1,\ldots,B_{i-1}`$. Subsequent trace-preserving operations act outside $`B_i`$, so they leave its marginal unchanged. At the end,
 
 ```math
-\operatorname{Tr}\!\left(\psi_{B_i}
+\mathrm{Tr}\!\left(\psi_{B_i}
 \,\Omega^{\mathrm{nom}}_{L,B_i}\right)\ge1-\varepsilon
 \quad\text{for every }i.
 \tag{9}
@@ -134,7 +134,7 @@ I_{B_1\cdots B_{i-1}}\otimes(I_{B_i}-\psi_{B_i})
 Taking the expectation in the nominal output and using (9) yields
 
 ```math
-\operatorname{Tr}\!\left[(I-P_L)\Omega^{\mathrm{nom}}_L\right]
+\mathrm{Tr}\!\left[(I-P_L)\Omega^{\mathrm{nom}}_L\right]
 \le L\varepsilon.
 \tag{11}
 ```
@@ -177,7 +177,7 @@ Since $`\mathcal K_L`$ is positive and linear,
 Testing (14) with the positive failure projector $`I-P_L`$ and applying (11) gives
 
 ```math
-1-\operatorname{Tr}(P_L\Omega^{\mathrm{free}}_L)
+1-\mathrm{Tr}(P_L\Omega^{\mathrm{free}}_L)
 \le L\varepsilon w^{-L}
 =\delta_L.
 \tag{15}
@@ -227,12 +227,12 @@ nor of any other additivity property involving the arbitrary catalyst.
 Set
 
 ```math
-s=\operatorname{Tr}(P_L\Omega^{\mathrm{free}}_L).
+s=\mathrm{Tr}(P_L\Omega^{\mathrm{free}}_L).
 ```
 
 Equation (15) gives $`s\ge1-\delta_L`$. For any free comparison state
-$`\sigma\in\operatorname{STAB}(B^L)`$, let
-$`t=\operatorname{Tr}(P_L\sigma)`$. By definition, $`t\le b_L`$.
+$`\sigma\in\mathrm{STAB}(B^L)`$, let
+$`t=\mathrm{Tr}(P_L\sigma)`$. By definition, $`t\le b_L`$.
 
 Apply the measurement $`\{P_L,I-P_L\}`$ to both states. Relative-entropy data processing implies
 
