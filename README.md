@@ -45,6 +45,12 @@ Start with the [scientific route](science/README.md), then follow the [model](sc
 
 The [LLM reading guide](llms.txt) maps questions to authoritative files.
 
+## Learn the project
+
+The [30-milestone understanding map](learning/MILESTONES.md) moves from 13 background/preliminaries milestones to 17 narrative/innovation milestones. Each phase connects local ideas into the complete model or result, with prerequisites and direct scientific source pointers.
+
+The single educational anchor is John Watrous's *The Theory of Quantum Information*. The [Watrous bridge](learning/WATROUS_BRIDGE.md) identifies focused readings, translates fidelity and trace-distance conventions, and develops a two-phase catalyst example before connecting the textbook tools to the converse and construction.
+
 ## Reproduce the finite checks
 
 From the repository root, with Python 3.10 or newer:
