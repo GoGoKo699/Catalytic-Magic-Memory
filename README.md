@@ -4,9 +4,9 @@ A reusable magic-state factory can consume a constant number of fresh noisy inpu
 
 For a fixed sufficiently low, nonzero noise level and a sufficiently large fixed input budget, the minimum quantum catalyst width satisfies
 
-$$
+```math
 q_{\min}(\epsilon)=\Theta\!\left(\log\frac{1}{\epsilon}\right).
-$$
+```
 
 Here $`\epsilon`$ is state infidelity. The factory is deterministic, uses ideal stabilizer operations, and returns its catalyst marginal exactly. Outputs may be correlated with the catalyst and with one another. All persistent quantum memory and correlated control are counted; an arbitrary amount of free classical storage is allowed.
 
@@ -29,11 +29,11 @@ Let the fresh input satisfy $`\chi\ge w\sigma_0`$, where $`\sigma_0`$ is free an
 
 The same circuit with all fresh inputs replaced by $`\sigma_0`$ has weight $`w^L`$ in a positive decomposition of the nominal experiment. Its joint error is therefore at most $`\delta_L=L\epsilon/w^L`$. In that experiment the initial catalyst is the only source of magic. A binary target test and relative-entropy monotonicity give
 
-$$
+```math
 E_R(\tau)\ge
 (1-\delta_L)L\log_2(1/f)-h_2(\delta_L),
 \qquad \delta_L\le\tfrac12,
-$$
+```
 
 where $`F_{\mathrm{STAB}}(\psi^{\otimes L})=f^L`$. Choosing $`L`$ proportional to $`\log(1/\epsilon)`$ gives the lower bound. The proof uses the tensor powers of the target, without assuming additivity involving an arbitrary catalyst.
 

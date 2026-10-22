@@ -18,10 +18,10 @@ Section 6.2, Definition 9 and Theorem 5 introduce stabilizer alignment and prove
 
 The required overlaps are
 
-$$
+```math
 F_{\rm stab}(T)=\cos^2(\pi/8),\qquad
 F_{\rm stab}(\mathrm{CCZ})=9/16.
-$$
+```
 
 Their multiplicativity within the target tensor powers is an existing ingredient. Generic failures of stabilizer-fidelity multiplicativity do not establish an obstruction for these particular small targets. In particular, the project does not claim a new stabilizer-alignment theorem.
 
@@ -43,15 +43,15 @@ Section 7.2, Proposition 6 gives single-qubit stabilizer fidelity, and Section 8
 
 Roberto Rubboli and Marco Tomamichel, **Fundamental Limits on Correlated Catalytic State Transformations**, *Physical Review Letters* **129**, 120506 (2022). [DOI](https://doi.org/10.1103/PhysRevLett.129.120506) · [arXiv:2111.13356v2](https://arxiv.org/abs/2111.13356v2), 22 August 2022.
 
-Theorem 2, with the quantitative form in Supplemental Section V, Theorem 7, proves logarithmically divergent catalyst resource when, for some $\alpha\in[1/2,1)$,
+Theorem 2, with the quantitative form in Supplemental Section V, Theorem 7, proves logarithmically divergent catalyst resource when, for some $`\alpha\in[1/2,1)`$,
 
-$$
+```math
 \mathfrak D_\alpha(\rho_{\rm in})<\mathfrak D_\alpha(\psi),
-$$
+```
 
-and $\mathfrak D_\alpha$ is additive for the target against every catalyst. The error is purified distance of the joint output from the target–catalyst product. This is a substantial predecessor: a logarithmic catalyst-resource law itself is already known under these hypotheses.
+and $`\mathfrak D_\alpha`$ is additive for the target against every catalyst. The error is purified distance of the joint output from the target–catalyst product. This is a substantial predecessor: a logarithmic catalyst-resource law itself is already known under these hypotheses.
 
-The present comparison turns on the strict input–target resource gap. Pure targets approximately decouple from their environment, so the different error convention alone is not a substantive separation. Nor can one extend the theorem to $\alpha\to0$ without additional work: the stated range is $[1/2,1)$, and Appendix B discusses a failure of the analogous smoothed Petz-divergence approach.
+The present comparison turns on the strict input–target resource gap. Pure targets approximately decouple from their environment, so the different error convention alone is not a substantive separation. Nor can one extend the theorem to $`\alpha\to0`$ without additional work: the stated range is $`[1/2,1)`$, and Appendix B discusses a failure of the analogous smoothed Petz-divergence approach.
 
 ### An explicit input for which the gap is absent
 
@@ -59,55 +59,55 @@ The following calculation combines the single-qubit fidelity and product additiv
 
 Define
 
-$$
+```math
 |T\rangle=(|0\rangle+e^{i\pi/4}|1\rangle)/\sqrt2,
 \quad
 \rho=0.99|T\rangle\!\langle T|+0.01|T^\perp\rangle\!\langle T^\perp|,
 \quad f=\cos^2(\pi/8).
-$$
+```
 
 An explicit free optimizer is
 
-$$
+```math
 \sigma_* = \frac{|+\rangle\!\langle+|+|+i\rangle\!\langle+i|}{2}
 =f|T\rangle\!\langle T|+(1-f)|T^\perp\rangle\!\langle T^\perp|,
-$$
+```
 
-whose Bloch vector is $(1/2,1/2,0)$. To see optimality, twirl any free state by the identity and the Clifford $U=(X+Y)/\sqrt2$. This fixes $\rho$, preserves the free set, and cannot decrease its fidelity with $\rho$. The twirled state has Bloch vector $(a,a,0)$ with $|a|\le1/2$, so its eigenvalue $s$ along $|T\rangle$ lies in $[1-f,f]$. Its fidelity with $\rho$ is $(\sqrt{0.99s}+\sqrt{0.01(1-s)})^2$, which increases throughout this interval because $s\le f<0.99$. Thus $s=f$ is optimal, giving
+whose Bloch vector is $`(1/2,1/2,0)`$. To see optimality, twirl any free state by the identity and the Clifford $`U=(X+Y)/\sqrt2`$. This fixes $`\rho`$, preserves the free set, and cannot decrease its fidelity with $`\rho`$. The twirled state has Bloch vector $`(a,a,0)`$ with $`|a|\le1/2`$, so its eigenvalue $`s`$ along $`|T\rangle`$ lies in $`[1-f,f]`$. Its fidelity with $`\rho`$ is $`(\sqrt{0.99s}+\sqrt{0.01(1-s)})^2`$, which increases throughout this interval because $`s\le f<0.99`$. Thus $`s=f`$ is optimal, giving
 
-$$
+```math
 F_{\rm stab}(\rho)
 =\left(\sqrt{0.99f}+\sqrt{0.01(1-f)}\right)^2
 \simeq0.9168385592.
-$$
+```
 
-Using the single-qubit fidelity multiplicativity of [RTT2024](#rtt2024), Theorem 2, and $\mathfrak D_{1/2}=-\log_2 F_{\rm stab}$ gives
+Using the single-qubit fidelity multiplicativity of [RTT2024](#rtt2024), Theorem 2, and $`\mathfrak D_{1/2}=-\log_2 F_{\rm stab}`$ gives
 
-$$
+```math
 \mathfrak D_{1/2}(\rho^{\otimes2})
 =-2\log_2 F_{\rm stab}(\rho)
 \simeq0.2505207491
 > -\log_2 f
 \simeq0.2284466968.
-$$
+```
 
-The target value is constant over the entire relevant Rényi range. For $\alpha\in[1/2,1)$, put $\beta=(1-\alpha)/\alpha\in(0,1]$. For any free $\sigma$, scalar Jensen applied to its spectral decomposition gives
+The target value is constant over the entire relevant Rényi range. For $`\alpha\in[1/2,1)`$, put $`\beta=(1-\alpha)/\alpha\in(0,1]`$. For any free $`\sigma`$, scalar Jensen applied to its spectral decomposition gives
 
-$$
+```math
 \langle T|\sigma^\beta|T\rangle
 \le \langle T|\sigma|T\rangle^\beta
 \le f^\beta.
-$$
+```
 
 The pure-state formula for sandwiched Rényi divergence therefore implies
 
-$$
+```math
 \widetilde D_\alpha(T\|\sigma)
 =\frac{\alpha}{\alpha-1}\log_2\langle T|\sigma^\beta|T\rangle
 \ge-\log_2 f.
-$$
+```
 
-The same commuting free state $\sigma_*$ attains equality, so $\mathfrak D_\alpha(T)=-\log_2 f$. Since $\mathfrak D_\alpha(\rho^{\otimes2})\ge\mathfrak D_{1/2}(\rho^{\otimes2})$, the strict gap required by [RT2022](#rt2022) fails throughout its parameter range. Free ancillary qubits can equalize the input and output dimensions. The source is full rank, so the present positive-free-component bound still applies. This establishes a concrete difference in theorem scope without relying on generic nonadditivity claims.
+The same commuting free state $`\sigma_*`$ attains equality, so $`\mathfrak D_\alpha(T)=-\log_2 f`$. Since $`\mathfrak D_\alpha(\rho^{\otimes2})\ge\mathfrak D_{1/2}(\rho^{\otimes2})`$, the strict gap required by [RT2022](#rt2022) fails throughout its parameter range. Free ancillary qubits can equalize the input and output dimensions. The source is full rank, so the present positive-free-component bound still applies. This establishes a concrete difference in theorem scope without relying on generic nonadditivity claims.
 
 ## Purification bounds and the free-component method
 
@@ -119,7 +119,7 @@ Kun Fang and Zi-Wen Liu, **No-Go Theorems for Quantum Resource Purification**, *
 
 Theorem 1 bounds the error of purification from a full-rank input, including a success-probability-dependent version; Corollary 2 excludes exact purification. This establishes the underlying full-rank obstruction before the present work.
 
-Applying that theorem directly to the combined input $\rho^{\otimes n}\otimes\tau$ requires the catalyst to satisfy the corresponding input condition. An arbitrary catalyst may be rank deficient. Even among full-rank catalysts of fixed dimension, the smallest eigenvalue can approach zero. Thus the stated minimum-eigenvalue estimate does not directly give a bound in terms of catalyst qubits or relative entropy of magic alone.
+Applying that theorem directly to the combined input $`\rho^{\otimes n}\otimes\tau`$ requires the catalyst to satisfy the corresponding input condition. An arbitrary catalyst may be rank deficient. Even among full-rank catalysts of fixed dimension, the smallest eigenvalue can approach zero. Thus the stated minimum-eigenvalue estimate does not directly give a bound in terms of catalyst qubits or relative entropy of magic alone.
 
 <a id="fl2022"></a>
 
@@ -129,11 +129,11 @@ Kun Fang and Zi-Wen Liu, **No-Go Theorems for Quantum Resource Purification: New
 
 Definition 1 uses the largest free component
 
-$$
+```math
 \Gamma(\rho)=\max\{p:\rho\ge p\sigma,\ \sigma\text{ free}\}.
-$$
+```
 
-Theorem 4 gives $\varepsilon\ge\Gamma(\rho)(1-F_{\rm free}(\psi))$, and Corollary 5 gives logarithmic copy overhead. Proposition 7 characterizes positive free component by support; full rank is sufficient, not necessary.
+Theorem 4 gives $`\varepsilon\ge\Gamma(\rho)(1-F_{\rm free}(\psi))`$, and Corollary 5 gives logarithmic copy overhead. Proposition 7 characterizes positive free component by support; full rank is sufficient, not necessary.
 
 The branch decomposition in the present proof is this existing method. The additional step is to repeat an exactly reusable factory and charge its arbitrary resourceful catalyst on the all-free-input branch. The catalyst need not be returned on that branch. Directly applying the older bound to the combined source and catalyst can be vacuous because their joint free component can vanish, including for a pure magic catalyst.
 
