@@ -9,6 +9,8 @@ The central question is how the accuracy of a continuously reused magic-state fa
 3. [Construction](construction.md): exponential batch suppression, the stationary catalytic cycle, and the matching CCZ width.
 4. [Resources](resources.md): fixed-input quantifiers, source thresholds, quantum versus classical memory, preparation, and physical interpretation.
 
+For a structured learning route, use the [30-milestone map](../learning/MILESTONES.md) and the [Watrous bridge](../learning/WATROUS_BRIDGE.md). The bridge supplies targeted foundations and notation translations; the pages above remain the complete scientific account.
+
 ## The logical structure
 
 The input condition $`\chi\ge w\sigma_0`$ supplies a positive free component. Repeated nominal accuracy transfers to a counterfactual experiment containing only free fresh inputs. Its output can then owe its magic only to the initial catalyst. A binary target test converts the known exponentially small free overlap into a lower bound on relative entropy of magic.
