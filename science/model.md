@@ -51,7 +51,7 @@ For a pure target $`\psi_B=|\psi\rangle\langle\psi|`$ and a specified error tole
 \mathrm{Tr}_B\omega_{BC}=\tau_C,
 \qquad
 \mathrm{Tr}(\psi_B\omega_B)\ge 1-\varepsilon.
-\tag{M1}
+\qquad\text{(M1)}
 ```
 
 The first condition is **exact marginal return on the designated input**. It does not require
@@ -75,7 +75,7 @@ For $`L`$ calls, the initial state is
 
 ```math
 \chi_{A_1}\otimes\cdots\otimes\chi_{A_L}\otimes\tau_C.
-\tag{M2}
+\qquad\text{(M2)}
 ```
 
 Call $`i`$ applies $`\Lambda`$ to $`A_iC`$ and emits $`B_i`$. Earlier outputs are kept untouched by the factory. The same physical memory is passed from one call to the next; it is not replaced by a newly prepared copy of $`\tau_C`$.
@@ -96,7 +96,7 @@ The source condition is the operator inequality
 \sigma_{0,A}\in\mathrm{STAB}(A),
 \qquad
 0<w\le 1,
-\tag{M3}
+\qquad\text{(M3)}
 ```
 
 where $`\sigma_0`$ is normalized and $`\succeq`$ denotes positive-semidefinite order. For $`w<1`$, this is equivalently a decomposition
@@ -123,7 +123,7 @@ Consequently, for a call consuming $`n`$ copies,
 \sigma_0=(I_d/d)^{\otimes n},
 \qquad
 w=p^n
-\tag{M4}
+\qquad\text{(M4)}
 ```
 
 is always an admissible choice. A better positive domination weight can improve the finite numerical bound, but is not required.
@@ -150,7 +150,7 @@ b_L
 =F_{\mathrm{STAB}}(\psi^{\otimes L})
 :=\max_{\sigma\in\mathrm{STAB}_{bL}}
 \mathrm{Tr}\!\left(\psi^{\otimes L}\sigma\right).
-\tag{M5}
+\qquad\text{(M5)}
 ```
 
 This is the squared overlap with the closest pure stabilizer state; maximizing over the convex free set gives the same value because the objective is linear. It is distinct from an assumption that the actual output copies are independent.
@@ -160,7 +160,7 @@ The basic finite theorem uses $`b_L`$ directly. The logarithmic memory law follo
 ```math
 b_L\le f^L
 \qquad\text{for every positive integer }L.
-\tag{M6}
+\qquad\text{(M6)}
 ```
 
 Thus only exponential decay of the target's free overlap is needed. No multiplicativity statement involving the arbitrary catalyst is assumed.
@@ -185,7 +185,7 @@ D(\tau_C\Vert\sigma_C),
 \qquad
 D(\rho\Vert\sigma)
 =\mathrm{Tr}\rho(\log_2\rho-\log_2\sigma).
-\tag{M7}
+\qquad\text{(M7)}
 ```
 
 The usual convention gives $`D=+\infty`$ when the support of $`\rho`$ is not contained in that of $`\sigma`$. Nevertheless, $`E_R(\tau_C)`$ is finite for every finite qubit catalyst because the maximally mixed comparison state is free and full rank. The definition and its use in correlated catalytic bounds are standard; see [RT2022](../references/related-work.md#rt2022).
@@ -195,7 +195,7 @@ If the complete catalyst is a quantum register of $`q`$ qubits, then
 ```math
 E_R(\tau_C)\le D(\tau_C\Vert I/2^q)
 =q-S(\tau_C)\le q.
-\tag{M8}
+\qquad\text{(M8)}
 ```
 
 ### Arbitrarily large classical storage
@@ -207,7 +207,7 @@ Suppose instead that the complete persistent state is genuinely classical–quan
 =\sum_j a_j |j\rangle\langle j|_J\otimes\tau_{j,Q},
 \qquad
 \dim Q=2^q.
-\tag{M9}
+\qquad\text{(M9)}
 ```
 
 There is no prescribed upper bound on the number of labels $`j`$. The state
@@ -224,7 +224,7 @@ E_R(\tau_{JQ})
 \le D(\tau_{JQ}\Vert\sigma_{JQ})
 =q-\sum_j a_j S(\tau_{j,Q})
 \le q.
-\tag{M10}
+\qquad\text{(M10)}
 ```
 
 Hence an arbitrarily large finite classical controller cannot supply the required relative-entropy magic. Coherently stored labels are quantum memory and must be included in the quantum count. If different classical branches use different numbers of qubits, padding smaller branches with free qubits lets $`q`$ denote the maximum persistent quantum width.

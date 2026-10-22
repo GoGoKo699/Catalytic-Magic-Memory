@@ -149,7 +149,7 @@ On every correctable error pattern, the whole ideal output is $`\psi^{\otimes M}
 1-\mathrm{Tr}(\psi^{\otimes M}\eta_M)
 \le
 \binom{N}{t+1}(Cp)^{t+1}.
-\tag{1}
+\qquad\text{(1)}
 ```
 
 This is the bound proved in [WHY2025], Eqs. (301)–(305). It is stronger than a separate error bound on each output and does not require an additional factor of $`M`$ here.
@@ -173,7 +173,7 @@ Using $`\binom Ns\le(eN/s)^s`$ in (1),
 =e^{-\beta g},
 \qquad
 \beta:=\frac18\ln\frac{1}{236eCp}>0.
-\tag{2}
+\qquad\text{(2)}
 ```
 
 The condition $`p<p_*`$ is precisely what makes $`\beta`$ positive. This is an exponential upper bound with a fixed positive exponent at every fixed permitted source state.
@@ -185,7 +185,7 @@ For each marginal $`\eta_j`$ of $`\eta_M`$,
 \le
 1-\mathrm{Tr}(\psi^{\otimes M}\eta_M)
 \le\epsilon_g.
-\tag{3}
+\qquad\text{(3)}
 ```
 
 The first inequality follows from
@@ -238,7 +238,7 @@ There is a deterministic stabilizer channel $`\widehat{\mathcal B}_g`$ on $`M`$ 
 ```math
 \widehat{\mathcal B}_g(\zeta^{\otimes M})
 =\widehat\eta_M.
-\tag{4}
+\qquad\text{(4)}
 ```
 
 Discarding excess noisy inputs, running the batch, and adjoining free padding are all included in this channel.
@@ -267,7 +267,7 @@ The catalyst has $`M-1`$ quantum blocks and a classical register $`F`$ with valu
 \otimes
 \widehat\eta_{1:M-i}
 \otimes |i\rangle\langle i|_F.
-\tag{5}
+\qquad\text{(5)}
 ```
 
 The total number of quantum blocks in every summand is $`M-1`$. The state $`\widehat\eta_{1:M-i}`$ is an actual marginal of the possibly correlated batch output, not a product of marginal states or an ideal target.
@@ -305,7 +305,7 @@ Using (4) and relabeling the summation index gives the exact pre-emission state
 \otimes
 \widehat\eta_{1:M-j+1}
 \otimes |j\rangle\langle j|_F.
-\tag{6}
+\qquad\text{(6)}
 ```
 
 For $`j=1`$, this is the freshly distilled batch. For $`j>1`$, it is the branch that previously had flag $`j-1`$. There is always at least one batch-output block at the right end.
@@ -321,7 +321,7 @@ Tracing out the last quantum block in (6) gives
 \widehat\eta_{1:M-j}
 \otimes |j\rangle\langle j|_F
 =\tau_g.
-\tag{7}
+\qquad\text{(7)}
 ```
 
 The identity uses only consistency of partial traces. It makes no symmetry or independence assumption about $`\eta_M`$.
@@ -332,7 +332,7 @@ After removing padding, the emitted state is
 \omega_S
 =
 \frac1M\sum_{s=1}^{M}\eta_s.
-\tag{8}
+\qquad\text{(8)}
 ```
 
 Combining (3) and linearity of overlap with a pure target,
@@ -343,7 +343,7 @@ Combining (3) and linearity of overlap with a pure target,
 \frac1M\sum_{s=1}^{M}
 \left[1-\mathrm{Tr}(\psi\eta_s)\right]
 \le\epsilon_g.
-\tag{9}
+\qquad\text{(9)}
 ```
 
 Thus the catalyst returns exactly and one fresh block produces one accurate output with certainty.
@@ -370,7 +370,7 @@ g_i=
 33\,32^{i-1}-561\,32^{i/2-1}+1,
 &i\ \text{even}.
 \end{cases}
-\tag{10}
+\qquad\text{(10)}
 ```
 
 In particular, $`g_3=32705`$. These genera satisfy
@@ -380,7 +380,7 @@ In particular, $`g_3=32705`$. These genera satisfy
 \le g_i
 \le33\,32^{i-1}
 \qquad(i\ge3).
-\tag{11}
+\qquad\text{(11)}
 ```
 
 For odd $`i`$, the coefficient subtracted from $`33\,32^{i-1}`$ is at most $`34/32=17/16<3/2`$. For even $`i`$, it is at most $`561/1024<3/2`$. The positive final $`1`$ only strengthens the lower bound; the total subtracted term exceeds $`1`$, giving the upper bound. Hence
@@ -391,7 +391,7 @@ For odd $`i`$, the coefficient subtracted from $`33\,32^{i-1}`$ is at most $`34/
 \frac{33\cdot32}{63/2}
 =\frac{704}{21}
 <34.
-\tag{12}
+\qquad\text{(12)}
 ```
 
 For a requested $`0<\epsilon<1`$, set
@@ -411,7 +411,7 @@ and choose the first $`i\ge3`$ with $`g_i\ge G_\epsilon`$. The sequence diverges
 G_\epsilon\le g_i\le34G_\epsilon,
 \qquad
 \epsilon_{g_i}\le e^{-\beta g_i}\le\epsilon.
-\tag{13}
+\qquad\text{(13)}
 ```
 
 The catalyst in (5) has
@@ -424,7 +424,7 @@ q=3r(M-1)
 g_3,\,
 \frac{\ln(1/\epsilon)}{\beta}
 \right\},
-\tag{14}
+\qquad\text{(14)}
 ```
 
 quantum qubits and
@@ -435,7 +435,7 @@ b=\lceil\log_2 M\rceil
 \left\lceil
 \log_2\left(\frac54\,34G_\epsilon\right)
 \right\rceil
-\tag{15}
+\qquad\text{(15)}
 ```
 
 classical phase bits. Equations (14) and (15) are finite bounds valid across the full family. At fixed source quality and fixed $`r`$, they imply the claimed logarithmic quantum memory and doubly logarithmic phase memory as $`\epsilon\to0`$.

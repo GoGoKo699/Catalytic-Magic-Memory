@@ -15,7 +15,7 @@ $`\Lambda_{AC\to BC}`$ a channel satisfying
 \mathrm{Tr}\!\left[
 \psi_B\,\mathrm{Tr}_C\Lambda(\chi_A\otimes\tau_C)
 \right]\ge1-\varepsilon,
-\tag{1}
+\qquad\text{(1)}
 ```
 
 where $`\psi_B=|\psi\rangle\langle\psi|`$ is pure. Suppose that
@@ -26,7 +26,7 @@ where $`\psi_B=|\psi\rangle\langle\psi|`$ is pure. Suppose that
 \sigma_{0,A}\in\mathrm{STAB}(A),
 \qquad
 0<w\le1.
-\tag{2}
+\qquad\text{(2)}
 ```
 
 Write
@@ -38,7 +38,7 @@ b_L=\max_{\sigma\in\mathrm{STAB}(B^L)}
 \mathrm{Tr}(\psi^{\otimes L}\sigma),
 \qquad
 \delta_L=L\varepsilon w^{-L}.
-\tag{3}
+\qquad\text{(3)}
 ```
 
 For finite qubit registers, $`b_L>0`$ because the maximally mixed state is free. For a nonstabilizer pure target, $`b_L<1`$: otherwise a free state would equal $`\psi^{\otimes L}`$, whose single-copy marginal would make $`\psi`$ free. We assume this nontrivial case below.
@@ -53,7 +53,7 @@ h_2(u)=-u\log_2u-(1-u)\log_2(1-u),
 d_2(s\Vert t)
 =s\log_2\frac{s}{t}
  +(1-s)\log_2\frac{1-s}{1-t},
-\tag{4}
+\qquad\text{(4)}
 ```
 
 with their continuous endpoint conventions.
@@ -66,7 +66,7 @@ For every positive integer $`L`$:
 
 ```math
 \boxed{R\ge d_2(1-\delta_L\Vert b_L).}
-\tag{5}
+\qquad\text{(5)}
 ```
 
 **(ii)** If $`\delta_L\le1/2`$, then
@@ -77,7 +77,7 @@ R\ge
 (1-\delta_L)\log_2\frac1{b_L}
 -h_2(\delta_L).
 }
-\tag{6}
+\qquad\text{(6)}
 ```
 
 Suppose, additionally, that a fixed $`f\in(0,1)`$ satisfies $`b_L\le f^L`$ for every $`L`$, and put $`c=\log_2(1/f)`$. Then (6) implies
@@ -88,14 +88,14 @@ R\ge (1-\delta_L)Lc-h_2(\delta_L),
 \qquad
 \delta_L\le\frac12.
 }
-\tag{7}
+\qquad\text{(7)}
 ```
 
 When $`1-\delta_L\ge f^L`$, (5) also gives the explicitly evaluable bound
 
 ```math
 R\ge d_2(1-\delta_L\Vert f^L).
-\tag{8}
+\qquad\text{(8)}
 ```
 
 The hypotheses of (5) and (6) differ. In particular, (6) remains valid if $`1-\delta_L<b_L`$, although its right-hand side may then be uninformative. One may always combine any displayed lower bound with $`R\ge0`$.
@@ -115,7 +115,7 @@ This argument uses only the reduced state on $`A_iC`$. It remains valid when $`C
 \mathrm{Tr}\!\left(\psi_{B_i}
 \,\Omega^{\mathrm{nom}}_{L,B_i}\right)\ge1-\varepsilon
 \quad\text{for every }i.
-\tag{9}
+\qquad\text{(9)}
 ```
 
 The same reuse property is explicit in [FL2026](../references/related-work.md#fl2026); the argument above gives the precise version needed here.
@@ -128,7 +128,7 @@ I-P_L
 \sum_{i=1}^L
 I_{B_1\cdots B_{i-1}}\otimes(I_{B_i}-\psi_{B_i})
 \otimes I_{B_{i+1}\cdots B_L}.
-\tag{10}
+\qquad\text{(10)}
 ```
 
 Taking the expectation in the nominal output and using (9) yields
@@ -136,7 +136,7 @@ Taking the expectation in the nominal output and using (9) yields
 ```math
 \mathrm{Tr}\!\left[(I-P_L)\Omega^{\mathrm{nom}}_L\right]
 \le L\varepsilon.
-\tag{11}
+\qquad\text{(11)}
 ```
 
 No statistical independence of the outputs has been assumed.
@@ -150,7 +150,7 @@ Keep this channel fixed and define
 ```math
 \Omega^{\mathrm{free}}_L
 =\mathcal K_L(\sigma_0^{\otimes L}\otimes\tau_C).
-\tag{12}
+\qquad\text{(12)}
 ```
 
 The superscript indicates that every fresh input in this comparison experiment is free. It does not assert that the output is free: the initial $`\tau_C`$ can contain magic.
@@ -161,7 +161,7 @@ Tensoring (2) gives
 \chi^{\otimes L}\otimes\tau_C
 \succeq
 w^L\sigma_0^{\otimes L}\otimes\tau_C.
-\tag{13}
+\qquad\text{(13)}
 ```
 
 For $`w<1`$, this can also be seen by expanding
@@ -171,7 +171,7 @@ Since $`\mathcal K_L`$ is positive and linear,
 
 ```math
 \Omega^{\mathrm{nom}}_L\succeq w^L\Omega^{\mathrm{free}}_L.
-\tag{14}
+\qquad\text{(14)}
 ```
 
 Testing (14) with the positive failure projector $`I-P_L`$ and applying (11) gives
@@ -180,7 +180,7 @@ Testing (14) with the positive failure projector $`I-P_L`$ and applying (11) giv
 1-\mathrm{Tr}(P_L\Omega^{\mathrm{free}}_L)
 \le L\varepsilon w^{-L}
 =\delta_L.
-\tag{15}
+\qquad\text{(15)}
 ```
 
 The comparison uses the same initial catalyst and the same physical sequence of channels. It does not assume that the catalyst marginal returns to $`\tau_C`$ in this comparison run. Such a return is unnecessary. Exact return on the nominal input was used only to obtain (9).
@@ -194,7 +194,7 @@ The map
 ```math
 \mathcal G_L(X_C)
 =\mathcal K_L(\sigma_0^{\otimes L}\otimes X_C)
-\tag{16}
+\qquad\text{(16)}
 ```
 
 is completely stabilizer preserving. Indeed, appending free states is free; each application of $`\Lambda`$ preserves stabilizer states even with the old outputs retained as a reference; and discarding the final memory is free. These observations also explain why complete stabilizer preservation was specified in the model.
@@ -215,7 +215,7 @@ Taking the minimum over $`\sigma`$ proves monotonicity. Applying it to (16),
 ```math
 R=E_R(\tau_C)
 \ge E_R(\Omega^{\mathrm{free}}_L).
-\tag{17}
+\qquad\text{(17)}
 ```
 
 There is no invocation of
@@ -239,7 +239,7 @@ Apply the measurement $`\{P_L,I-P_L\}`$ to both states. Relative-entropy data pr
 ```math
 D(\Omega^{\mathrm{free}}_L\Vert\sigma)
 \ge d_2(s\Vert t).
-\tag{18}
+\qquad\text{(18)}
 ```
 
 This measurement is a mathematical test used in the proof. It is not required to be a free operation implemented by the factory.
@@ -281,7 +281,7 @@ d_2(s\Vert t)
  -h_2(s)\\
 &\ge s\log_2\frac1t-h_2(s).
 \end{aligned}
-\tag{19}
+\qquad\text{(19)}
 ```
 
 Assume $`\delta_L\le1/2`$. Because $`1-s\le\delta_L`$, the symmetry and monotonicity of binary entropy on $`[0,1/2]`$ imply
@@ -327,7 +327,7 @@ a=\ln(1/w)>0,
 c=\log_2(1/f)>0,
 \qquad
 x=\ln(1/\varepsilon).
-\tag{20}
+\qquad\text{(20)}
 ```
 
 For sufficiently small positive $`\varepsilon`$, choose
@@ -335,7 +335,7 @@ For sufficiently small positive $`\varepsilon`$, choose
 ```math
 L_\varepsilon=
 \left\lfloor\frac{x-2\ln x}{a}\right\rfloor.
-\tag{21}
+\qquad\text{(21)}
 ```
 
 For example, the following derivation applies whenever
@@ -356,7 +356,7 @@ and therefore
 =L_\varepsilon e^{-x+aL_\varepsilon}
 \le\frac{L_\varepsilon}{x^2}
 \le\frac1{ax}\le\frac12.
-\tag{22}
+\qquad\text{(22)}
 ```
 
 Moreover,
@@ -376,7 +376,7 @@ R\ge
 -c-\frac c{a^2}
 -h_2\!\left(\frac1{ax}\right).
 }
-\tag{23}
+\qquad\text{(23)}
 ```
 
 In particular, for any family of stationary factories with the same positive domination weight $`w`$ and the same target-overlap constant $`f`$,
@@ -386,7 +386,7 @@ E_R(\tau_\varepsilon)
 \ge
 \frac ca\ln\frac1\varepsilon
 -O\!\left(\ln\ln\frac1\varepsilon\right),
-\tag{24}
+\qquad\text{(24)}
 ```
 
 ```math
@@ -396,7 +396,7 @@ E_R(\tau_\varepsilon)
 \ge
 \frac{\log_2(1/f)}{\ln(1/w)}.
 }
-\tag{25}
+\qquad\text{(25)}
 ```
 
 The constants in the remainder depend on the fixed $`a,c`$. The channel, catalyst, and catalyst dimension may vary with $`\varepsilon`$.
@@ -414,7 +414,7 @@ E_R(\tau_\varepsilon)
 \frac{\log_2(1/f)}{n\ln(1/p)}
 \ln\frac1\varepsilon
 -O\!\left(\ln\ln\frac1\varepsilon\right).
-\tag{26}
+\qquad\text{(26)}
 ```
 
 Thus the stored magic diverges logarithmically at every fixed finite fresh-input budget. This is not a uniform expansion for arbitrary $`n=n(\varepsilon)`$ or changing source noise. Those cases retain the finite theorem with their actual $`w`$.
@@ -427,7 +427,7 @@ Assume the exponential target-overlap condition, let $`R=E_R(\tau)<\infty`$, and
 
 ```math
 L_R=\left\lfloor\frac{2(R+1)}c\right\rfloor+1.
-\tag{27}
+\qquad\text{(27)}
 ```
 
 ### Corollary 2: fixed-resource error floor
@@ -438,7 +438,7 @@ Every stationary factory in the model satisfies
 \boxed{
 \varepsilon>\frac{w^{L_R}}{2L_R}.
 }
-\tag{28}
+\qquad\text{(28)}
 ```
 
 **Proof.** If instead $`\varepsilon\le w^{L_R}/(2L_R)`$, then
@@ -466,7 +466,7 @@ Consequently every finite lower bound above is also a lower bound on $`q`$. In p
 \frac{q_\varepsilon}{\ln(1/\varepsilon)}
 \ge
 \frac{\log_2(1/f)}{\ln(1/w)}.
-\tag{29}
+\qquad\text{(29)}
 ```
 
 For a directly stated qubit error floor, set
@@ -481,7 +481,7 @@ The same contradiction proof, using $`R\le q`$, yields
 \boxed{
 \varepsilon>\frac{w^{L_q}}{2L_q}.
 }
-\tag{30}
+\qquad\text{(30)}
 ```
 
 An unlimited supply of free classical labels cannot evade this conclusion. The count concerns the complete persistent quantum state, with all coherently stored control information included.
