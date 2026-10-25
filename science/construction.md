@@ -4,6 +4,8 @@ A deterministic catalytic CCZ factory can consume a fixed number of fresh noisy 
 
 The construction assumes ideal stabilizer operations, arbitrary classical control and classical randomness, and independent fresh copies of one fixed noisy source. The catalyst is mixed and may become correlated with emitted outputs. Its complete marginal, including a classical phase register, returns exactly after every call. The [resource accounting](resources.md) distinguishes this statement from a bound on physical fault-tolerant hardware or execution time.
 
+The state identities on this page use $`S`$ for the emitted register and $`A`$ for the complete catalyst, corresponding to $`B`$ and $`C`$ in the [model](model.md), respectively. The scalar $`C`$ below is the CCZ conversion cost, rather than a register label.
+
 ## 1. Source, target, and statement
 
 Let
