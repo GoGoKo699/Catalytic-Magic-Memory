@@ -2,7 +2,7 @@
 
 A reusable magic-state factory can consume a constant number of fresh noisy inputs per output. Improving its accuracy still requires a growing stock of magic in persistent quantum memory. This project proves a logarithmic lower bound on that stored resource and derives matching CCZ memory scaling from established distillation constructions.
 
-For a fixed sufficiently low, nonzero noise level and a sufficiently large fixed input budget, the minimum quantum catalyst width satisfies
+For a fixed depolarized CCZ source with sufficiently low nonzero noise and a sufficiently large fixed input budget, the minimum quantum catalyst width satisfies
 
 ```math
 q_{\min}(\epsilon)=\Theta\!\left(\log\frac{1}{\epsilon}\right).
@@ -14,12 +14,11 @@ Here $`\epsilon`$ is state infidelity. The factory is deterministic, uses ideal 
 
 | Result | Scope | Scientific account |
 |---|---|---|
-| Finite-error lower bound on stored magic | Any fresh block with a positive free-state component; arbitrary mixed catalyst | [Converse](science/converse.md) |
-| Logarithmic quantum-memory necessity | Every fixed finite noisy-input budget; computational $`T`$ and CCZ targets | [Model](science/model.md) and [converse](science/converse.md) |
-| Nonzero error floor for finite stored magic | Explicit inequality, with no input–target resource ordering assumption | [Converse](science/converse.md) |
+| Finite-error bounds on stored magic | Relative entropy, stabilizer fidelity and max-relative entropy; arbitrary mixed catalyst | [Converse](science/converse.md) |
+| Logarithmic quantum-memory necessity | T and CCZ targets; every fixed finite noisy-input budget, with unrestricted finite free classical storage | [Model](science/model.md) and [converse](science/converse.md) |
+| Nonzero error floors | Finite stored-resource budgets, without an input–target resource ordering assumption | [Converse](science/converse.md#7-an-explicit-error-floor) |
 | Matching logarithmic CCZ memory | Fixed below-threshold depolarized source and a sufficient constant input budget | [Construction](science/construction.md) |
-| Quantum memory cannot be replaced by classical flags | Classical–quantum catalysts with unrestricted finite classical storage | [Model](science/model.md) |
-| Startup and ongoing costs | No perfect magic seed; initialization and persistent memory charged separately | [Resources](science/resources.md) |
+| Source-only initialization and ongoing costs | Logarithmic startup cost; preparation, retained memory and per-call inputs charged separately | [Resources](science/resources.md) |
 
 The lower bound is the contribution developed here. The upper construction combines [Wills–Hsieh–Yamasaki batch distillation](references/related-work.md#why2025) with [Fang–Liu catalytic conversion](references/related-work.md#fl2026). The target-overlap identities are due to [Bravyi and collaborators](references/related-work.md#b2019).
 
@@ -41,9 +40,9 @@ The [closest-work comparison](references/related-work.md) explains the distincti
 
 ## Read the science
 
-Start with the [scientific route](science/README.md), then follow the [model](science/model.md), [converse proof](science/converse.md), [attaining construction](science/construction.md), and [resource interpretation](science/resources.md). The [related-work account](references/related-work.md) identifies inherited ingredients, exact theorem pointers, and the limits of the literature comparison. Machine-readable citations are in the [bibliography](references/references.bib).
+The [scientific route](science/README.md) connects the model, converse, attaining construction and resource interpretation, with direct links to the main results. The [related-work account](references/related-work.md) identifies inherited ingredients, exact theorem pointers and the scope of the contribution; structured citations are in the [bibliography](references/references.bib).
 
-The [LLM reading guide](llms.txt) maps questions to authoritative files. [Project provenance](references/PROVENANCE.md) records the preserved development history.
+The [LLM reading guide](llms.txt) maps reading goals to authoritative pages. Historical sources and restoration records are in [project provenance](references/PROVENANCE.md).
 
 ## Learn the project
 

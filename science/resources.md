@@ -92,30 +92,7 @@ Some registers hold known free padding in some phase components. One can generat
 
 The phase register has only $`M`$ classical values. If it is physically represented by computational-basis qubits, those qubits contribute $`b=\lceil\log_2M\rceil`$ additional storage locations. If classical bits are accounted separately, the quantum catalyst cost remains $`q`$ and the phase cost is $`b`$.
 
-This distinction also applies to the lower bound. Suppose an arbitrary catalyst consists of $`q`$ quantum qubits and an unrestricted classical register:
-
-```math
-\tau_{FQ}
-=\sum_c p_c |c\rangle\langle c|_F\otimes\tau_c.
-```
-
-The comparison state
-
-```math
-\sigma_{FQ}
-=\sum_c p_c |c\rangle\langle c|_F\otimes\frac{I_Q}{2^q}
-```
-
-is free. With entropy and relative entropy measured in bits,
-
-```math
-E_R(\tau_{FQ})
-\le D(\tau_{FQ}\|\sigma_{FQ})
-=q-\sum_c p_c S(\tau_c)
-\le q.
-```
-
-Consequently, a lower bound on the catalyst's relative-entropy magic also lower-bounds its quantum memory, even when classical storage is free and its dimension is not bounded in advance. A large classical label alone cannot provide the required magic.
+This distinction also applies to the lower bound. The [classical–quantum memory argument](model.md#arbitrarily-large-classical-storage) proves $`E_R(\tau)\le q`$ for a complete catalyst with $`q`$ quantum qubits and an unrestricted finite classical register. Thus a lower bound on stored relative-entropy magic also lower-bounds quantum memory, even when classical storage is free and its dimension is not bounded in advance. A large classical label alone cannot provide the required magic.
 
 The phase register is not the entire classical cost of the implementation. The batch decoder, a description of the code, and controller work registers may require much more classical storage. The construction makes no claim that all classical memory is $`O(\log M)`$.
 

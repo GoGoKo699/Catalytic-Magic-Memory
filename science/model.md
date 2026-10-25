@@ -337,4 +337,4 @@ The infimum includes arbitrary initial catalyst states and arbitrary finite free
 
 The converse holds for the larger completely stabilizer-preserving class, so it bounds this physical-operation minimum as well. The [CCZ construction](construction.md) proves feasibility with a catalyst prepared from the same noisy source at a sufficient fixed budget. For its fixed permitted source and every fixed $`r\ge1680`$, the two bounds give $`q_{\min}(\varepsilon)=\Theta(\log(1/\varepsilon))`$ as $`\varepsilon\downarrow0`$. The dependence on source and budget is suppressed only in this asymptotic shorthand.
 
-The mathematical statement and every step of its proof are given in [Converse bounds](converse.md).
+The finite lower bound and its proof are given in [Converse bounds](converse.md). The matching upper bound is established in the [CCZ construction](construction.md), with initialization and the complete resource ledger in [Resources](resources.md).

@@ -1,49 +1,33 @@
 # Catalytic Magic Memory
 
-> A deterministic reusable magic-state factory with a fixed noisy-input budget needs logarithmically growing stored magic and quantum memory as output infidelity vanishes. A matching CCZ memory construction follows from attributed batch-distillation and catalytic-conversion results.
+> A deterministic reusable magic-state factory with a fixed noisy-input budget needs logarithmically growing stored magic and quantum memory as output infidelity vanishes. A matching CCZ construction follows from attributed batch-distillation and catalytic-conversion results.
 
-## Authoritative routes
+## Reading routes
 
-- [Overview](README.md): result, scope, resource qualifications, reproduction and contact.
-- [Scientific entrypoint](science/README.md): connected reading route and proof structure.
-- [Milestone map](learning/MILESTONES.md): exactly 30 project-defined understanding targets, in 13 background/preliminaries and 17 narrative/innovation milestones.
-- [Watrous bridge](learning/WATROUS_BRIDGE.md): the single educational anchor, verified manuscript pointers, convention translations, worked catalyst example, and connections to the research.
-- [Model](science/model.md): exact operational assumptions, source weight, error convention, full catalyst and controller.
-- [Converse](science/converse.md): principal relative-entropy inequality, companion resource bounds, binary test, asymptotic law and error floors.
-- [Construction](science/construction.md): matching CCZ protocol and exact catalyst-return algebra.
-- [Resources](science/resources.md): quantum/classical storage, source-only startup bounds, fixed budget, explicit constants and limits.
-- [Related work](references/related-work.md): source keys, versions and precise comparisons.
-- [Bibliography](references/references.bib): structured citations.
-- [Verification](verification/README.md): commands, deterministic checks and their scope.
-- [Provenance](references/PROVENANCE.md): historical source identity and durable archives; use the active scientific pages for current claims.
+- **Overview:** [README](README.md) → [scientific route](science/README.md).
+- **Full argument:** [model](science/model.md) → [converse](science/converse.md) → [construction](science/construction.md) → [resources](science/resources.md).
+- **Study:** [30-milestone map](learning/MILESTONES.md) → [Watrous bridge](learning/WATROUS_BRIDGE.md) → the scientific pages linked by each milestone. The map has 13 background/preliminaries and 17 narrative/innovation milestones. Watrous is the sole educational anchor; the bridge translates conventions and develops worked examples.
+- **Reproduction:** [verification guide](verification/README.md) → [run_all.py](verification/run_all.py) → [expected outputs](verification/expected.json). Run `python3 verification/run_all.py` from the root.
 
-## Choose a reading path
+## Find an authoritative answer
 
-- **Scientific story:** overview → scientific entrypoint → model → converse → construction → resources.
-- **Study:** milestone map → Watrous bridge and its targeted source sections → the canonical scientific pages linked by each milestone. The map is project-defined and learner-independent; Watrous is the sole educational anchor.
-- **Theorem and proof:** model §§2–6 → converse Theorem 1 and its proof → horizon optimization and memory consequences → construction §§1, 5–6, and 8. Check the same fixed source, input budget, operations, and infidelity convention in both directions.
-- **Reproduction:** verification guide → run_all.py → expected.json. Compare the stated finite scope with the analytical claims and imported theorems.
-
-## Questions and where to answer them
-
-- How does the selected textbook connect to this project? Read the bridge's targeted-reading table and the milestone map.
-- Is Watrous's fidelity the project's target overlap? His fidelity is the root quantity; the project uses its square for a pure target. His trace-distance naming also differs by a factor of two. Read the bridge's convention table.
-- Why can a catalyst have correlations and still be reused? Read model and converse.
-- Why is the free-input counterfactual valid without returning the catalyst? Read the converse proof.
-- Where does logarithmic width enter? Read the finite inequality and its asymptotic corollary.
-- Does unlimited classical memory avoid the bound? Read the classical–quantum memory argument.
-- Is constant input overhead ruled out? No; read construction and resources together.
-- Are the attaining constructions new? Their ingredients are attributed in construction and related work.
-- Does the closest previous catalyst bound already imply the result? Read its resource-gap assumption and the explicit two-input example.
-- Is this a physical-qubit or runtime optimum? No; read resources for the logical-memory claim and charged startup.
-- Can finite checks certify the theorem? No; they support explicit ingredients and examples. The analytical account and imported theorems establish the general claims.
+| Question | Source |
+|---|---|
+| What is returned, which operations are free, and what belongs to the catalyst? | [Model §§1–3](science/model.md#1-free-states-and-operations) |
+| What source weight, target convention and stored-resource measures are used? | [Model §§4–6](science/model.md#4-a-positive-free-component-in-the-source) |
+| Why does correlated reuse yield finite bounds, logarithmic necessity and error floors? | [Converse](science/converse.md), starting with Theorem 1 |
+| What can be said about a controlled return error over a finite horizon? | [Finite-horizon lemma](science/converse.md#finite-horizon-lemma) |
+| How does the batch protocol become an exactly reusable CCZ factory? | [Construction §§2–6](science/construction.md#2-the-inherited-batch-protocol) |
+| How are initialization, quantum/classical storage, workspace and throughput charged? | [Resource ledger and interpretation](science/resources.md) |
+| Which ingredients are inherited, and how does the result compare with earlier catalyst bounds? | [Related work](references/related-work.md) and [bibliography](references/references.bib) |
+| How do fidelity, purified distance and trace distance translate? | [Watrous convention bridge](learning/WATROUS_BRIDGE.md#notation-and-error-conventions) |
 
 ## Scientific distinctions to preserve
 
-The fresh source and its nonzero noise are fixed while output infidelity tends to zero. The input count per emitted output is fixed. Exact return refers to the catalyst marginal, not a product output. All persistent quantum memory and correlated control belong to the catalyst. Arbitrary finite free classical storage is allowed. A classical controller has a classical–quantum joint state, not merely a diagonal marginal.
+The source and its nonzero noise are fixed as output infidelity vanishes. Fresh source blocks are independent of the past, and their per-call budget stays fixed. Exact return concerns the complete catalyst marginal, including correlated control; outputs may remain correlated. Free classical storage is unrestricted but finite in each instance. A classical controller has a classical–quantum joint state, not merely a diagonal marginal.
 
-The converse applies to any fixed finite input budget; a matching CCZ construction is shown for a sufficient constant budget. The source–target resource ordering is unrestricted. The explicit construction has large constants and assumes ideal stabilizer operations. Do not infer practical advantage, fault-tolerant gate counts, or a result for catalysts returned only on a success branch.
+The converse allows completely stabilizer-preserving channels and arbitrary mixed catalysts. It covers every fixed finite input budget and imposes no input–target resource ordering. Its free-input comparison does not require catalyst return on that comparison input. The finite-horizon return-error estimate gives no unlimited-reuse guarantee for a fixed nonzero disturbance.
 
-## Working with the repository
+The matching CCZ construction uses physical stabilizer operations, sufficiently clean fixed noise and a sufficient constant budget. It charges initialization without a perfect magic seed. Its large constants establish logical-memory scaling; physical fault-tolerant qubits, gate counts and runtime need additional implementation assumptions. Return only upon heralded success is outside the stated model.
 
-Preserve authoritative theorem statements and source attribution when editing summaries. Read the whole affected proof and the source/target convention before changing a claim. Run the documented verification after a substantive change. Keep numerical scope separate from analytical scope. The repository is the scientific and shared learning record; personal assessment and editorial planning are not part of its scientific account.
+Use the scientific pages for exact statements and proofs. Preserve their quantifiers, error conventions and attribution when editing summaries. Run the documented checks after substantive changes, and distinguish their finite scope from the analytical theorems. [Provenance](references/PROVENANCE.md) provides durable historical sources and restoration records.
