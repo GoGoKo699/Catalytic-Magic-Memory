@@ -43,7 +43,7 @@ The [closest-work comparison](references/related-work.md) explains the distincti
 
 Start with the [scientific route](science/README.md), then follow the [model](science/model.md), [converse proof](science/converse.md), [attaining construction](science/construction.md), and [resource interpretation](science/resources.md). The [related-work account](references/related-work.md) identifies inherited ingredients, exact theorem pointers, and the limits of the literature comparison. Machine-readable citations are in the [bibliography](references/references.bib).
 
-The [LLM reading guide](llms.txt) maps questions to authoritative files.
+The [LLM reading guide](llms.txt) maps questions to authoritative files. [Project provenance](references/PROVENANCE.md) records the preserved development history.
 
 ## Learn the project
 
@@ -59,7 +59,7 @@ From the repository root, with Python 3.10 or newer:
 python3 verification/run_all.py
 ```
 
-The standard-library checks enumerate all 1,080 three-qubit stabilizer projectors, verify correlated catalyst marginal identities with exact rational matrices, reproduce the resource-gap example, and check explicit code-family parameters. See [verification and expected outputs](verification/README.md) for what each calculation establishes. The general theorem and all-accuracy scaling are analytical results.
+The standard-library checks enumerate all 6 one-qubit, 60 two-qubit and 1,080 three-qubit stabilizer projectors for the stated T and CCZ overlaps, verify correlated catalyst marginal identities with exact rational matrices, reproduce the resource-gap and free-weight examples, and check explicit code-family parameters. See [verification and expected outputs](verification/README.md) for what each calculation establishes. The general theorem and all-accuracy scaling are analytical results.
 
 ## Physical scope
 

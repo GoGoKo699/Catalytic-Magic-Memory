@@ -139,6 +139,35 @@ For example, a fixed depolarized pure target,
 
 obeys $`\rho_\lambda\succeq\lambda I_d/d`$. A call consuming $`n`$ copies has $`w=\lambda^n`$. For a three-qubit CCZ target, the source infidelity is $`7\lambda/8`$.
 
+### An optimized weight for a depolarized T source
+
+For the computational $`T`$ state specified below, let
+$`\rho_\lambda=(1-\lambda)\psi_T+\lambda I_2/2`$ with
+$`0<\lambda<1-1/\sqrt2`$. Its largest normalized free-component weight is
+
+```math
+p_{\rm free}=\frac{\lambda}{1-1/\sqrt2}.
+```
+
+Indeed, the free state $`\gamma`$ with Bloch vector $`(1/2,1/2,0)`$ gives
+$`\rho_\lambda=p_{\rm free}\gamma+(1-p_{\rm free})\psi_T`$.
+Conversely, every decomposition
+$`\rho_\lambda=p\sigma+(1-p)\eta`$ with free $`\sigma`$ obeys
+
+```math
+1-\frac\lambda2
+=\mathrm{Tr}(\psi_T\rho_\lambda)
+\le p\cos^2(\pi/8)+(1-p),
+```
+
+which forces $`p\le p_{\rm free}`$. For $`n`$ fresh copies,
+$`w=p_{\rm free}^{\,n}`$ is therefore an admissible block weight. This does
+not claim that the product choice is the largest free weight of the whole
+block. Optimizing the weight strengthens finite constants; a merely positive
+weight already suffices for the divergence theorem.
+
+### Fixed-weight quantifiers
+
 The finite theorem permits any particular $`n`$ and any admissible $`w`$. Its logarithmic asymptotic corollary fixes a common $`w\in(0,1)`$ while $`\varepsilon\to0`$. A fixed noisy state and a fixed fresh-copy count provide such a weight. If the input count or source changes with accuracy, the finite theorem must be applied with the actual weight for each instance; a uniform asymptotic conclusion needs a separately justified common weight.
 
 ## 5. The target overlap assumption
@@ -173,6 +202,18 @@ For the targets used here, equality in (M6) is a known stabilizer-overlap identi
 | CCZ | $`\displaystyle \lvert\mathrm{CCZ}\rangle=\mathrm{CCZ}\lvert+\rangle^{\otimes3}`$ | 3 | $`9/16`$ | $`0.8300749986\ldots`$ |
 
 Some resource-theory papers use the name $`T`$ for a different, tetrahedral Bloch-sphere state. The explicit ket in this table fixes the convention throughout these documents.
+
+More generally, every pure state on at most three qubits is stabilizer aligned
+by [B2019](../references/related-work.md#b2019). Its tensor-power overlap is
+therefore $`b_L=F_{\mathrm{STAB}}(\psi)^L`$, with a constant strictly below
+one for a nonstabilizer target. For such a small pure target, stabilizer
+fidelity also factorizes against an arbitrary mixed catalyst; the
+[reference account](../references/related-work.md#strong-small-target-multiplicativity)
+explains the stronger statement and its derivation. The converse needs only
+the tensor-power identity. Failure of generic multiplicativity is not a
+reason to exclude earlier results for $`T`$ or CCZ; the explicit scope
+comparison instead uses the
+[absence of the required input–target resource gap](../references/related-work.md#an-explicit-input-for-which-the-gap-is-absent).
 
 ## 6. Stored magic and quantum memory
 
@@ -231,6 +272,46 @@ Hence an arbitrarily large finite classical controller cannot supply the require
 
 The converse allows an arbitrary initial $`\tau`$, even one prepared with external resources. Its preparation cost is not needed to establish a lower bound on stored magic. Any claimed upper construction has the separate obligation to account for initialization and to identify the source of all its magic.
 
+### Other stored-resource measures
+
+The same comparison experiment also constrains fidelity and max-relative
+entropy of magic. Use squared Uhlmann fidelity and define
+
+```math
+F(\rho,\sigma)=\|\sqrt\rho\sqrt\sigma\|_1^2,
+\qquad
+F_{\mathrm{STAB}}(\rho)=\max_{\sigma\in\mathrm{STAB}}F(\rho,\sigma),
+\qquad
+G(\rho)=-\log_2F_{\mathrm{STAB}}(\rho),
+```
+
+```math
+M_R(\rho)=\min_{\sigma\in\mathrm{STAB}}D_{\max}(\rho\Vert\sigma),
+\qquad
+D_{\max}(\rho\Vert\sigma)
+=\inf\{m:\rho\preceq2^m\sigma\}.
+```
+
+Thus $`M_R`$ is logarithmic generalized robustness, with multiplicative
+robustness $`2^{M_R(\rho)}`$. The pointwise divergence inequalities imply
+
+```math
+G(\rho)\le E_R(\rho)\le M_R(\rho).
+```
+
+For the complete classical–quantum catalyst (M9),
+$`\tau_{JQ}\preceq2^q\sigma_{JQ}`$ with the same free comparison state
+used in (M10), since $`\tau_{j,Q}\preceq I_Q`$. Hence
+
+```math
+G(\tau_{JQ})\le E_R(\tau_{JQ})\le M_R(\tau_{JQ})\le q.
+```
+
+This also covers a wholly quantum catalyst. The
+[companion resource bounds](converse.md#companion-resource-bounds) quantify
+these measures without replacing the stronger direct relative-entropy
+theorem.
+
 ## 7. Meaning and limits of the model
 
 The resource question is whether bounded fresh noisy input per emission can coexist with bounded reusable quantum memory as the emitted pure-state approximation improves. The converse shows that a positive free component in the source forces increasing stored magic when the target tensor powers have exponentially decreasing stabilizer overlap.
@@ -240,7 +321,7 @@ $`1-\mathrm{Tr}(\psi\omega_B)`$; it is not an automatic diamond-norm guarantee f
 $`\tfrac12\|\omega_B-\psi\|_1\le\varepsilon`$
 does imply the overlap guarantee in (M1).
 
-The stationary theorem does not assume that the input block contains less total magic than the target. It does require deterministic processing, independent fresh blocks, and exact nominal return of the complete persistent state. Postselected return only on success, adaptive unbounded input consumption, approximate catalyst recovery, source drift, correlated blocks across calls, or unaccounted persistent resources require a different analysis. The [finite-horizon lemma](converse.md#finite-horizon-lemma) needs only an independently established accuracy guarantee for every output in the chosen horizon; it does not derive such a guarantee from approximate return.
+The stationary theorem does not assume that the input block contains less total magic than the target. It does require deterministic processing, independent fresh blocks, and exact nominal return of the complete persistent state. Postselected return only on success, adaptive unbounded input consumption, approximate catalyst recovery, source drift, correlated blocks across calls, or unaccounted persistent resources require a different analysis. The [finite-horizon lemma](converse.md#finite-horizon-lemma) takes a guarantee for each output in a specified horizon as its premise. The controlled return-error estimate following that lemma shows how a nominal trace-distance disturbance can accumulate; it does not supply the indefinite accuracy guarantee of exact stationarity.
 
 ### The quantity minimized in the matching law
 

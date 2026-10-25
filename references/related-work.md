@@ -25,6 +25,58 @@ F_{\rm stab}(\mathrm{CCZ})=9/16.
 
 Their multiplicativity within the target tensor powers is an existing ingredient. Generic failures of stabilizer-fidelity multiplicativity do not establish an obstruction for these particular small targets. In particular, the project does not claim a new stabilizer-alignment theorem.
 
+<a id="strong-small-target-multiplicativity"></a>
+
+#### A small pure target and an arbitrary mixed catalyst
+
+The following consequence makes the scope more explicit: if $`\psi`$ is pure
+on at most three qubits and $`\tau`$ is any finite-qubit state, then
+
+```math
+F_{\rm stab}(\psi\otimes\tau)
+=F_{\rm stab}(\psi)F_{\rm stab}(\tau).
+```
+
+For pure $`\tau=\chi`$, define $`F_r`$ as in [B2019], Definition 9:
+$`F_r(\chi)=2^{-r/2}\max_P\langle\chi|P|\chi\rangle`$, over rank-$`2^r`$
+stabilizer projectors. Its Lemma 11 gives $`F_r(\chi)\le F_0(\chi)`$ for
+$`r=1,2,3`$ even when $`\chi`$ has arbitrarily many qubits. The local-Clifford
+Schmidt form in Corollary 2, Eqs. (139)–(140), represents a bipartite pure
+stabilizer state $`S`$ by $`r\le3`$ maximally entangled pairs and local pure
+stabilizers. For its Schmidt-support projectors $`P_A,P_C`$, Cauchy–Schwarz gives
+
+```math
+|\langle S|\psi\otimes\chi\rangle|^2
+\le 2^{-r}\langle\psi|P_A|\psi\rangle
+                \langle\chi|P_C|\chi\rangle
+\le F_r(\psi)F_r(\chi)
+\le F_0(\psi)F_0(\chi).
+```
+
+Product stabilizer states attain the reverse bound. This proves the pure
+case from the cited ingredients; Theorem 5 alone states multiplicativity
+when both factors are aligned.
+
+For mixed states, Uhlmann's theorem, in
+[Watrous, Theorem 3.22, p. 151](https://cs.uwaterloo.ca/~watrous/TQI/TQI.3.pdf),
+gives the ensemble identity
+
+```math
+F_{\rm stab}(x)
+=\max_{x=\sum_i p_i|\chi_i\rangle\langle\chi_i|}
+  \sum_i p_iF_{\rm stab}(\chi_i).
+```
+
+To derive it, purify a free mixture $`\sum_i q_i|s_i\rangle\langle s_i|`$
+using orthogonal labels. Uhlmann optimizes over purifications of $`x`$,
+hence its pure-state ensembles. For a fixed ensemble, choose the phases and
+each stabilizer $`s_i`$ optimally; Cauchy–Schwarz optimizes the weights
+$`q_i`$ to give the displayed sum. Repeated vectors and zero weights permit
+a common label space. Every ensemble vector of $`\psi\otimes\tau`$ must
+have the pure factor $`\psi`$, so the pure-case product equality proves the
+mixed case. This is a derivation, not an additional theorem attributed to
+[B2019]. It is contextual: the factory converse does not assume it.
+
 <a id="rtt2024"></a>
 
 ### [RTT2024] Rubboli, Takagi, and Tomamichel: mixed-state additivity
@@ -51,7 +103,14 @@ Theorem 2, with the quantitative form in Supplemental Section V, Theorem 7, prov
 
 and $`\mathfrak D_\alpha`$ is additive for the target against every catalyst. The error is purified distance of the joint output from the target–catalyst product. This is a substantial predecessor: a logarithmic catalyst-resource law itself is already known under these hypotheses.
 
-The present comparison turns on the strict input–target resource gap. Pure targets approximately decouple from their environment, so the different error convention alone is not a substantive separation. Nor can one extend the theorem to $`\alpha\to0`$ without additional work: the stated range is $`[1/2,1)`$, and Appendix B discusses a failure of the analogous smoothed Petz-divergence approach.
+The present comparison turns on the strict input–target resource gap. The
+[small-target product identity](#strong-small-target-multiplicativity) shows
+that the additivity premise at $`\alpha=1/2`$ holds for pure T and CCZ even
+against arbitrary mixed catalysts. Pure targets approximately decouple from
+their environment, so the different error convention alone is not a
+substantive separation. Nor can one extend the theorem to $`\alpha\to0`$
+without additional work: the stated range is $`[1/2,1)`$, and Appendix B
+discusses a failure of the analogous smoothed Petz-divergence approach.
 
 ### An explicit input for which the gap is absent
 
@@ -137,6 +196,12 @@ Theorem 4 gives $`\varepsilon\ge\Gamma(\rho)(1-F_{\rm free}(\psi))`$, and Coroll
 
 The branch decomposition in the present proof is this existing method. The additional step is to repeat an exactly reusable factory and charge its arbitrary resourceful catalyst on the all-free-input branch. The catalyst need not be returned on that branch. Directly applying the older bound to the combined source and catalyst can be vacuous because their joint free component can vanish, including for a pure magic catalyst.
 
+In contrast, the [source-only initialization lower bound](../science/resources.md#source-only-initialization-lower-bound)
+is an ordinary-purification corollary: compose preparation with the first
+factory call and discard its memory. Exact catalyst return is unnecessary
+for that startup bound; it does not itself locate the resource that must
+remain stored between uses.
+
 <a id="rt2021"></a>
 
 ### [RT2021] Regula and Takagi: channel resource bounds
@@ -176,6 +241,26 @@ Kun Fang and Zi-Wen Liu, **One-shot distillation with constant overhead using ca
 Theorem 3 converts a batch protocol into catalytic single-output distillation. Theorem 4 proves exact marginal return and repeated use in the deterministic setting, allowing output correlations; Corollary 6 gives constant fresh-input overhead. Methods 4.1–4.2 describe the catalyst and reuse argument. Its block storage and classical flag give the memory accounting used here when combined with [WHY2025](#why2025).
 
 Section 2.3, following Corollary 6, explicitly raises the question of whether vanishing error can be achieved with finite catalyst magic. The present result addresses the deterministic, fixed-source, positive-free-component setting. The probabilistic one-shot protocols of Theorem 7 and Corollary 8 are not automatically covered when catalyst return is required only upon success.
+
+<a id="lk2025"></a>
+
+### [LK2025] Lipka-Bartosik and Korzekwa: sufficient finite catalyst sizes
+
+Patryk Lipka-Bartosik and Kamil Korzekwa, **Finite-size catalysis in quantum
+resource theories**, *Physical Review A* **111**, 022440 (2025).
+[DOI](https://doi.org/10.1103/PhysRevA.111.022440) ·
+[arXiv:2405.08914v2](https://arxiv.org/abs/2405.08914v2), 24 March 2026.
+The following locators refer to that revised preprint.
+
+For permutationally free resource theories, Lemma 1 connects finite multicopy
+conversions to correlated catalytic transformations. Theorem 3 uses a
+conversion rate exceeding one to give a sufficient catalyst dimension;
+second-order rate information estimates the required copy count. Section IV
+explicitly leaves necessity of these size criteria open. This complements
+the batch-to-catalyst construction: existence of a catalyst at a stated size
+and a lower bound on every admissible factory answer different questions.
+It does not replace the fixed-source, fixed-input-budget necessity argument
+used here.
 
 ## Broadcasting and robustness
 

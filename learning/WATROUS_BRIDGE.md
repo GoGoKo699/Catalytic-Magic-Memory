@@ -63,6 +63,12 @@ The project's error is therefore
 e_\psi(\rho)=1-\mathrm{Tr}(\psi\rho)=1-F_W(\rho,\psi)^2.
 ```
 
+A root-fidelity guarantee $`F_W\ge1-\eta`$, with $`0\le\eta\le1`$, gives
+$`e_\psi\le2\eta-\eta^2`$. For a pure target, purified distance
+$`P(\rho,\psi)=\sqrt{1-F_W(\rho,\psi)^2}`$ is exactly
+$`\sqrt{e_\psi}`$. These conversions keep the error parameters in
+the research comparisons distinct.
+
 Theorem 3.33 gives the upper inequality in
 
 ```math
@@ -223,6 +229,25 @@ Taking the expectation in the actual joint output bounds its product-target
 infidelity by $`L\epsilon`$. This is a union bound for commuting tests;
 the target is a tensor product, but the actual state need not be.
 
+For example, let $`\varphi`$ be a pure projector orthogonal to $`\psi`$.
+The two states
+
+```math
+\beta_{\mathrm{corr}}
+=(1-\epsilon)\psi\otimes\psi+\epsilon\varphi\otimes\varphi,
+\qquad
+\beta_{\mathrm{ind}}
+=[(1-\epsilon)\psi+\epsilon\varphi]^{\otimes2}
+```
+
+have identical one-output marginals, each with error $`\epsilon`$.
+Their joint errors are $`\epsilon`$ and $`2\epsilon-\epsilon^2`$,
+respectively. These are illustrative joint states, not a construction of a
+factory. They show why a marginal guarantee does not determine joint error,
+and why the union bound is sufficient without being a necessary allocation
+of error among outputs. Conditioning on a previous outcome can also change
+the catalyst state; the repeated guarantee concerns unconditional marginals.
+
 Now run the same complete circuit with every fresh block replaced by
 $`\sigma_0`$. Positivity, tensor products, and the positive action of the
 circuit imply
@@ -313,6 +338,17 @@ block has less total resource than the target. The
 [closest-work comparison](../references/related-work.md#rt2022) explains
 the earlier logarithmic catalyst bounds and the precise distinction.
 
+The same counterfactual also bounds the
+[other stored-resource measures](../science/model.md#other-stored-resource-measures):
+logarithmic maximum free fidelity $`G`$ and max-relative entropy $`M_R`$.
+Watrous's Theorem 3.27, p. 156, says fidelity cannot decrease under a channel.
+Optimizing over free comparison states therefore makes maximum free fidelity
+nondecreasing under free processing, while its negative logarithm $`G`$
+is nonincreasing. The [companion bounds](../science/converse.md#companion-resource-bounds)
+use that direction. The order $`G\le E_R\le M_R\le q`$ does not identify
+these quantities: a lower bound on $`M_R`$ alone would not bound the smaller
+$`E_R`$. The binary-relative-entropy argument above directly bounds $`E_R`$.
+
 ## From a batch protocol to a stationary factory
 
 The general cycle behind the two-phase example stores a uniform mixture
@@ -351,6 +387,11 @@ threshold is $`p<1/(236e\cdot70)`$.
 The catalyst can be prepared from the same noisy source without a perfect
 magic seed. Its preparation cost and the periodically executed batch
 circuit remain part of the [resource ledger](../science/resources.md).
+The [source-only initialization lower bound](../science/resources.md#source-only-initialization-lower-bound)
+has separate provenance: preparation followed by the first use is already
+an ordinary purification protocol, so [FL2022](../references/related-work.md#fl2022)
+applies without invoking catalyst return. The retained-memory converse
+instead constrains what must remain in the factory after initialization.
 
 ## Joining the learning route to the science
 

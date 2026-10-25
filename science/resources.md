@@ -47,6 +47,39 @@ A single batch execution suffices in each realized preparation branch; there is 
 
 Initialization uses independent source states for the batch and for the raw-source part of the buffer. Subsequent calls receive new independent source blocks. This independence is needed for the channel identities and is distinct from the allowed correlations among the batch outputs.
 
+### Source-only initialization lower bound
+
+If initialization itself must use only the same noisy source and free
+ancillas, its source count also has logarithmic order. This necessity is
+already an ordinary purification bound from
+[FL2022](../references/related-work.md#fl2022); it does not require catalyst
+return.
+
+Suppose a deterministic free preparation consumes at most $`J`$ source
+copies to produce $`\tau`$, and the first call consumes $`r`$ further
+copies. Padding any unused budget by discarded copies makes their
+composition, followed by catalyst discard, a free channel on
+$`\rho^{\otimes(J+r)}`$. If $`\rho\succeq p\sigma_0`$ with normalized
+free $`\sigma_0`$ and $`0<p<1`$, its all-free comparison output is
+normalized and has target overlap at most $`b_1`$. Testing the failure
+projector gives
+
+```math
+\epsilon\ge p^{J+r}(1-b_1),
+\qquad
+J\ge
+\frac{\ln(1/\epsilon)+\ln(1-b_1)}{\ln(1/p)}-r.
+```
+
+For the CCZ source above, take $`p=\lambda`$ and $`b_1=9/16`$.
+Together with the preparation upper bound, this gives
+$`J_{\min}=\Theta(\log(1/\epsilon))`$ at the same fixed source and
+sufficient input budget. The count is a fixed or worst-case source budget;
+no bound on expected consumption with an unrestricted random stopping rule
+is asserted. The separate catalytic conclusion is that a diverging resource
+must remain stored in the returned memory, even when the initial catalyst
+was supplied externally.
+
 ## 3. Quantum memory and free classical memory
 
 The explicit padded catalyst contains $`M-1`$ blocks of $`r`$ three-qubit registers. Its quantum-register size is exactly
@@ -137,6 +170,14 @@ This example shows the scale of this particular achievability witness. The logar
 
 Exact return means that the density operator on the retained catalyst register, including its phase, is unchanged after each call. The catalyst can be correlated with previous outputs. The new output marginal still obeys the same infidelity bound because its fresh source block is independent and the local input catalyst marginal is unchanged.
 
+These are unconditional marginal guarantees. Conditioning on recorded
+outcomes from earlier uses can change the conditional catalyst state, so
+the theorem does not promise identical performance for every conditioned
+history. A record that controls later calls belongs to the complete
+persistent state. The finite-horizon treatment of controlled return error
+is given in the [converse](converse.md#finite-horizon-lemma); the matching
+construction uses exact return.
+
 For $`L`$ retained outputs with individual infidelities at most $`\epsilon`$, the elementary commuting-projector union bound gives
 
 ```math
@@ -152,9 +193,31 @@ O\!\left(1+\log\frac{L}{\varepsilon_{\rm tot}}\right)
 
 at the fixed source quality. To require trace distance at most $`\delta`$ from the pure product target, it suffices to choose $`\epsilon\le\delta^2/L`$, using the pure-target inequality stated in the construction. Stronger application-specific composability or throughput claims require their own analysis.
 
+These error allocations are sufficient, not necessary: the union bound
+does not determine the actual joint error of a correlated output stream.
+
 ## 7. Boundary of the matched resource law
 
 For a fixed sufficiently clean full-rank source, the construction supplies a factory at the fixed budget $`r=1680`$. The lower bound applies to that same source, target, budget, and exact marginal-return requirement. Its logarithmic necessity and the construction's logarithmic achievability therefore concern the same quantum-memory resource.
+
+The same order holds for the stored-resource measures
+[defined in the model](model.md#other-stored-resource-measures). Take a
+separate infimum of each cost over all admissible factories at prescribed
+error, fixed source, and any fixed budget $`r\ge1680`$. The companion
+fidelity converse, the direct relative-entropy converse, and
+$`G\le E_R\le M_R\le q`$ for the constructed catalyst give
+
+```math
+G_{\min}(\epsilon),\quad
+E_{R,\min}(\epsilon),\quad
+M_{R,\min}(\epsilon),\quad
+q_{\min}(\epsilon)
+=\Theta(\log(1/\epsilon)).
+```
+
+The infima need not share an optimizer. This is a common asymptotic order,
+not equality of their leading coefficients or a guarantee of feasibility
+at smaller fixed input budgets.
 
 The model treats stabilizer gates, free ancillas, measurements, resets, and classical processing as ideal. It charges noisy magic inputs and catalyst quantum memory separately. Protecting the stored catalyst and executing the growing batch on noisy hardware would require an outer fault-tolerant implementation, whose encoded space and time have not been specified here. Imperfect catalyst return, source drift, finite-lifetime memory, and postselected factories are different models.
 

@@ -4,10 +4,10 @@ The central question is how the accuracy of a continuously reused magic-state fa
 
 ## Reading route
 
-1. [Model](model.md): free operations, full-rank source noise, state infidelity, exact marginal return, and complete memory accounting.
-2. [Converse](converse.md): the finite-horizon inequality, correlated reuse, logarithmic stored-magic and width bounds, and explicit error floors.
+1. [Model](model.md): free operations, positive source free weights, state infidelity, exact marginal return, and complete memory accounting.
+2. [Converse](converse.md): the finite-horizon inequality, correlated reuse, logarithmic stored-magic and width bounds, companion fidelity and max-relative-entropy bounds, and explicit error floors.
 3. [Construction](construction.md): exponential batch suppression, the stationary catalytic cycle, and the matching CCZ width.
-4. [Resources](resources.md): fixed-input quantifiers, source thresholds, quantum versus classical memory, preparation, and physical interpretation.
+4. [Resources](resources.md): fixed-input quantifiers, source thresholds, quantum versus classical memory, source-only preparation bounds, and physical interpretation.
 
 For a structured learning route, use the [30-milestone map](../learning/MILESTONES.md) and the [Watrous bridge](../learning/WATROUS_BRIDGE.md). The bridge supplies targeted foundations and notation translations; the pages above remain the complete scientific account.
 

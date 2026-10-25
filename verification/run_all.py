@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Finite checks supporting the written catalytic-memory proofs.
 
-Standard library only. Exact rational arithmetic is used for Pauli overlaps and
-the correlated catalyst cycle. These checks do not prove tensor-power
+Standard library only. Exact rational arithmetic is used for CCZ Pauli overlaps
+and the correlated catalyst cycle. These checks do not prove tensor-power
 multiplicativity, the asymptotic converse, or the batch-code theorem.
 """
 from __future__ import annotations
 
 import argparse
 from collections import Counter
+from collections.abc import Callable
 from fractions import Fraction as F
 from itertools import combinations
 import json
@@ -63,9 +64,11 @@ def trace(a: Matrix) -> F:
     return sum(a[i][i] for i in range(len(a)))
 
 
-def pauli_overlap_check() -> dict:
-    """Enumerate every signed rank-one three-qubit stabilizer projector."""
-    n, d = 3, 8
+def stabilizer_overlaps(n: int, expectation: Callable[[int], F | float],
+                        tolerance: float = 0) -> tuple[int, Counter]:
+    """Enumerate signed rank-one projectors with exact Pauli multiplication."""
+    assert 1 <= n <= 3
+    d = 1 << n
 
     def xz(v: int) -> tuple[int, int]:
         return v & (d - 1), v >> n
@@ -86,8 +89,45 @@ def pauli_overlap_check() -> dict:
         assert exponent in (0, 2), "Only commuting factors are multiplied."
         return h, 1 if exponent == 0 else -1
 
+    spaces: dict[tuple[int, ...], tuple[int, ...]] = {}
+    for basis in combinations(range(1, d * d), n):
+        if not all(commutes(a, b) for a, b in combinations(basis, 2)):
+            continue
+        span = {0}
+        for generator in basis:
+            span |= {v ^ generator for v in span}
+        if len(span) == d:
+            spaces.setdefault(tuple(sorted(span)), basis)
+
+    histogram: Counter[F | float] = Counter()
+    for basis in spaces.values():
+        probabilities = []
+        for eigen_signs in range(d):
+            total = F(0)
+            for subset in range(d):
+                element, sign = 0, 1
+                for k, generator in enumerate(basis):
+                    if (subset >> k) & 1:
+                        element, phase = multiply(element, generator)
+                        sign *= phase * (-1 if (eigen_signs >> k) & 1 else 1)
+                total += sign * expectation(element)
+            overlap = total / d
+            assert -tolerance <= overlap <= 1 + tolerance
+            probabilities.append(overlap)
+            histogram[overlap] += 1
+        assert abs(sum(probabilities) - 1) <= tolerance, \
+            "Joint stabilizer eigenspaces must have total probability one."
+    assert len(spaces) == math.prod((1 << j) + 1 for j in range(1, n + 1))
+    assert sum(histogram.values()) == d * len(spaces)
+    return len(spaces), histogram
+
+
+def pauli_overlap_check() -> dict:
+    """Enumerate every signed rank-one three-qubit stabilizer projector."""
+    n, d = 3, 8
+
     def expectation(v: int) -> F:
-        x, z = xz(v)
+        x, z = v & (d - 1), v >> n
         # CCZ|+++> has equal magnitudes and only amplitude 111 is negative.
         signs = [1] * 7 + [-1]
         total = sum(signs[j ^ x] * signs[j] *
@@ -99,38 +139,54 @@ def pauli_overlap_check() -> dict:
             return F(0)
         return F(total * (1 if phase == 0 else -1), d)
 
-    spaces: dict[tuple[int, ...], tuple[int, int, int]] = {}
-    for basis in combinations(range(1, d * d), n):
-        u, v, w = basis
-        if not all(commutes(a, b) for a, b in combinations(basis, 2)):
-            continue
-        span = tuple(sorted({0, u, v, w, u ^ v, u ^ w, v ^ w, u ^ v ^ w}))
-        if len(span) == d:
-            spaces.setdefault(span, basis)
-
-    histogram: Counter[F] = Counter()
-    for basis in spaces.values():
-        for eigen_signs in range(d):
-            total = F(0)
-            for subset in range(d):
-                element, sign = 0, 1
-                for k, generator in enumerate(basis):
-                    if (subset >> k) & 1:
-                        element, phase = multiply(element, generator)
-                        sign *= phase * (-1 if (eigen_signs >> k) & 1 else 1)
-                total += sign * expectation(element)
-            overlap = total / d
-            assert 0 <= overlap <= 1
-            histogram[overlap] += 1
-    assert len(spaces) == 135
-    assert sum(histogram.values()) == 1080
+    spaces, histogram = stabilizer_overlaps(n, expectation)
     assert max(histogram) == F(9, 16)
     return {
-        "maximal_commuting_pauli_subspaces": len(spaces),
+        "maximal_commuting_pauli_subspaces": spaces,
         "pure_stabilizer_projectors": sum(histogram.values()),
         "maximum_ccz_overlap": str(max(histogram)),
         "overlap_histogram": {str(k): histogram[k] for k in sorted(histogram)},
     }
+
+
+def state_pauli_moments(state: list[complex], n: int) -> list[float]:
+    """Evaluate Hermitian Pauli expectations directly from amplitudes."""
+    d = 1 << n
+    if len(state) != d:
+        raise ValueError("State dimension does not match qubit count.")
+    if abs(sum(abs(x) ** 2 for x in state) - 1) > 1e-12:
+        raise ValueError("State is not normalized.")
+    moments = []
+    for v in range(d * d):
+        x, z = v & (d - 1), v >> n
+        phase = 1j ** ((x & z).bit_count() % 4)
+        moment = phase * sum(state[j ^ x].conjugate() * state[j] *
+                             (-1 if (j & z).bit_count() % 2 else 1)
+                             for j in range(d))
+        assert abs(moment.imag) < 1e-12
+        moments.append(moment.real)
+    return moments
+
+
+def t_overlap_check() -> dict:
+    """Check T and T tensor T, including all entangled two-qubit stabilizers."""
+    t = [complex(1 / math.sqrt(2)), (1 + 1j) / 2]
+    f = (2 + math.sqrt(2)) / 4
+    results = {}
+    for n in (1, 2):
+        state = t if n == 1 else [x * y for x in t for y in t]
+        moments = state_pauli_moments(state, n)
+        spaces, histogram = stabilizer_overlaps(n, moments.__getitem__, 1e-12)
+        maximum = max(histogram)
+        assert abs(maximum - f ** n) < 1e-12
+        results["T" if n == 1 else "T_tensor_T"] = {
+            "qubits": n,
+            "maximal_commuting_pauli_subspaces": spaces,
+            "pure_stabilizer_projectors": sum(histogram.values()),
+            "maximum_overlap": round(maximum, 12),
+            "exponent_bits": round(-math.log2(maximum), 12),
+        }
+    return results
 
 
 def catalyst_cycle_check() -> dict:
@@ -193,6 +249,22 @@ def resource_gap_check() -> dict:
     source = -2 * math.log2(spectral)
     target = -math.log2(f)
     assert source > target
+
+    # Depolarization nu gives eigenstate error nu/2, a distinct convention.
+    nu = .01
+    radial = 1 - nu
+    depolarized_spectral = (math.sqrt((1 - nu / 2) * f) +
+                            math.sqrt(nu / 2 * (1 - f))) ** 2
+    depolarized_bloch = (1 + radial / math.sqrt(2) +
+                         math.sqrt((1 - radial * radial) / 2)) / 2
+    assert abs(depolarized_spectral - depolarized_bloch) < 1e-14
+    free_weight = nu / (1 - 1 / math.sqrt(2))
+    assert 0 < free_weight < 1
+    # rho_nu = (1-p) |T><T| + p sigma, with sigma Bloch vector (1/2,1/2,0).
+    mixed_coordinate = (1 - free_weight) / math.sqrt(2) + free_weight / 2
+    assert abs(mixed_coordinate - radial / math.sqrt(2)) < 1e-14
+    depolarized_g = -math.log2(depolarized_spectral)
+    assert 2 * depolarized_g > target
     return {
         "source_t_eigenstate_error": noise,
         "optimal_free_fidelity": round(spectral, 12),
@@ -200,6 +272,15 @@ def resource_gap_check() -> dict:
         "target_D_alpha_bits_for_alpha_at_least_half": round(target, 12),
         "strict_gap_in_wrong_direction_bits": round(source - target, 12),
         "scope": "Values; optimizer and additivity are justified in the written account.",
+        "depolarized_t_source": {
+            "depolarization_nu": nu,
+            "t_eigenstate_error": nu / 2,
+            "optimal_free_weight": round(free_weight, 12),
+            "optimal_free_fidelity": round(depolarized_spectral, 12),
+            "G_bits": round(depolarized_g, 12),
+            "two_input_G_bits": round(2 * depolarized_g, 12),
+            "strict_gap_in_wrong_direction_bits": round(2 * depolarized_g - target, 12),
+        },
     }
 
 
@@ -247,6 +328,7 @@ def main() -> None:
     args = parser.parse_args()
     result = {
         "ccz_stabilizer_overlap": pauli_overlap_check(),
+        "t_stabilizer_overlaps": t_overlap_check(),
         "correlated_catalyst_cycle": catalyst_cycle_check(),
         "prior_resource_gap_witness": resource_gap_check(),
         "explicit_code_parameters": code_parameter_check(),
