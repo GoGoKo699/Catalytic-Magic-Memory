@@ -303,6 +303,68 @@ $`b_L\le f^L`$ implies $`\log_2(1/b_L)\ge Lc`$, proving (7).
 
 This completes the finite theorem, including the exponential-overlap specialization. The only target-specific input for computational $`T`$ and CCZ is the known tensor-power overlap identity from [B2019](../references/related-work.md#b2019).
 
+### Companion resource bounds
+
+Use the fidelity and max-relative-entropy quantities
+[defined in the model](model.md#other-stored-resource-measures). The same
+free-input comparison (12)–(16) gives, for every positive integer $`L`$,
+
+```math
+\boxed{
+F_{\mathrm{STAB}}(\tau)
+\le\min\left\{1,\left(\sqrt{b_L}+\sqrt{\delta_L}\right)^2\right\}.
+}
+```
+
+To prove this, a free optimizer $`\sigma_C`$ for $`\tau`$ and fidelity
+data processing give
+$`F_{\mathrm{STAB}}(\tau)\le
+F_{\mathrm{STAB}}(\Omega^{\mathrm{free}}_L)`$.
+For any free output comparison $`\sigma`$, the same binary measurement
+as in (18), with $`s\ge1-\delta_L`$ and $`t\le b_L`$, yields
+
+```math
+F(\Omega^{\mathrm{free}}_L,\sigma)
+\le\left(\sqrt{st}+\sqrt{(1-s)(1-t)}\right)^2
+\le\left(\sqrt{b_L}+\sqrt{\delta_L}\right)^2.
+```
+
+Maximizing over $`\sigma`$ proves the bound. No additivity involving the
+catalyst is needed.
+
+For max-relative entropy, a free comparison satisfying
+$`\tau\preceq2^m\sigma_C`$ gives
+$`\Omega^{\mathrm{free}}_L\preceq2^m\mathcal G_L(\sigma_C)`$.
+Its target overlap is at most $`2^m b_L`$. Minimizing $`m`$ and using (15)
+therefore gives
+
+```math
+\boxed{
+M_R(\tau)\ge\log_2\frac1{b_L}+\log_2(1-\delta_L),
+\qquad\delta_L<1.
+}
+```
+
+These imply the following finite error floors for budgets $`G(\tau)\le g`$
+and $`M_R(\tau)\le m`$, respectively:
+
+```math
+\varepsilon\ge
+\sup_{L\ge1}\frac{w^L}{L}
+\left(2^{-g/2}-\sqrt{b_L}\right)_+^2,
+\qquad
+\varepsilon\ge
+\sup_{L\ge1}\frac{w^L}{L}(1-2^m b_L)_+.
+```
+
+The suprema are over integers and $`(x)_+=\max\{x,0\}`$.
+The second floor also applies to a quantum-width budget $`q\le m`$,
+including unlimited finite classical storage, since $`M_R(\tau)\le q`$.
+If $`b_L\to0`$, either finite stored-resource budget gives a strictly
+positive floor even when no dimension bound is imposed. These are
+consequences of the same reuse argument; the direct relative-entropy
+inequality (7) remains the principal stored-magic bound.
+
 ### Finite-horizon lemma
 
 Fix a positive integer $`L`$. Suppose a deterministic completely stabilizer-preserving protocol $`\Phi_L`$ starts with
@@ -313,7 +375,27 @@ $`\delta_L=L\varepsilon w^{-L}`$, under their respective conditions. All initial
 
 **Proof.** The assumed marginal guarantees give (11) by the projector union bound. Positivity of $`\Phi_L`$ applied to the tensor domination (13) gives (14)–(15). With all fresh blocks replaced by $`\sigma_0`$, the resulting map from $`\tau_0`$ to the outputs is free, so (17) follows. The binary test in Section 5 then proves the same bounds. No return condition occurs in these steps. $`\square`$
 
-Exact stationarity in the headline theorem supplies the marginal guarantees for every $`L`$ using the same initial catalyst. The finite-horizon lemma instead takes those guarantees as a premise for one specified horizon. It does not establish that a small one-call catalyst disturbance preserves later accuracy, and it implies no unlimited-reuse claim for an approximately returned catalyst.
+Exact stationarity in the headline theorem supplies the marginal guarantees for every $`L`$ using the same initial catalyst. The finite-horizon lemma instead takes those guarantees as a premise for one specified horizon. In this form it assumes the later accuracy, rather than deriving it from a one-call catalyst disturbance, and implies no unlimited-reuse claim for an approximately returned catalyst.
+
+For a controlled finite-horizon comparison, suppose the same nominal call
+instead has catalyst half-trace-distance error at most $`\eta`$ when started
+at $`\tau`$. Let $`T_C`$ be the induced marginal channel on $`C`$ at the
+fixed fresh input. Contractivity and a triangle inequality give
+$`\tfrac12\|T_C^j(\tau)-\tau\|_1\le j\eta`$.
+The $`j`$th output infidelity is then at most
+$`\varepsilon+(j-1)\eta`$. The union bound and the same all-free-input
+comparison replace (3) by
+
+```math
+\delta_L=
+\left(L\varepsilon+\frac{L(L-1)}2\eta\right)w^{-L}.
+```
+
+The binary-test and companion bounds apply with this value under their
+respective conditions. This finite-horizon estimate assumes independent
+fresh blocks and the same channel, and gives no indefinite accuracy promise
+at fixed $`\eta>0`$. All headline and matching-order statements use
+$`\eta=0`$.
 
 ## 6. Optimize the number of repetitions
 
@@ -403,6 +485,26 @@ The constants in the remainder depend on the fixed $`a,c`$. The channel, catalys
 
 The choice (21) attains the leading coefficient available from the specialized entropy bound (7). Indeed, for positive $`\varepsilon`$, its admissibility condition implies
 $`aL+\ln L\le x-\ln2`$, and hence $`L\le x/a`$; the right-hand side of (7) is at most $`cL`$. This observation concerns optimization of the proved bound. It does not assert that the coefficient $`c/a`$ is the optimal physical memory constant.
+
+### Fidelity and max-relative-entropy costs
+
+For the fidelity bound, set $`A=a+c\ln2`$ and choose
+$`L=\lfloor(x-\ln x)/A\rfloor`$ when $`x\ge1`$ and this integer is
+positive. Since
+$`\delta_L/f^L=L e^{-x+AL}\le L/x\le1/A`$, the companion bound yields
+
+```math
+G(\tau_\varepsilon)
+\ge\frac cA(x-\ln x)-c
+-2\log_2(1+A^{-1/2}).
+```
+
+In particular, $`G(\tau_\varepsilon)=\Omega(\ln(1/\varepsilon))`$.
+The direct relative-entropy proof (24) has the larger leading coefficient
+$`c/a`$ and does not rely on the weaker implication $`E_R\ge G`$.
+Max-relative entropy inherits (24) from $`M_R\ge E_R`$; its companion
+finite bound can additionally improve numerical error floors. No matching
+leading physical constant is claimed for any of these measures.
 
 ### Fixed fresh-copy count
 

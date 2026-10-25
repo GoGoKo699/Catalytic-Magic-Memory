@@ -9,12 +9,13 @@
 - [Milestone map](learning/MILESTONES.md): exactly 30 project-defined understanding targets, in 13 background/preliminaries and 17 narrative/innovation milestones.
 - [Watrous bridge](learning/WATROUS_BRIDGE.md): the single educational anchor, verified manuscript pointers, convention translations, worked catalyst example, and connections to the research.
 - [Model](science/model.md): exact operational assumptions, source weight, error convention, full catalyst and controller.
-- [Converse](science/converse.md): finite inequality, binary test, asymptotic law and error floor.
+- [Converse](science/converse.md): principal relative-entropy inequality, companion resource bounds, binary test, asymptotic law and error floors.
 - [Construction](science/construction.md): matching CCZ protocol and exact catalyst-return algebra.
-- [Resources](science/resources.md): quantum/classical storage, startup, fixed budget, explicit constants and limits.
+- [Resources](science/resources.md): quantum/classical storage, source-only startup bounds, fixed budget, explicit constants and limits.
 - [Related work](references/related-work.md): source keys, versions and precise comparisons.
 - [Bibliography](references/references.bib): structured citations.
 - [Verification](verification/README.md): commands, deterministic checks and their scope.
+- [Provenance](references/PROVENANCE.md): historical source identity and durable archives; use the active scientific pages for current claims.
 
 ## Choose a reading path
 

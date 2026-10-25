@@ -84,11 +84,36 @@
     "sufficient_source_infidelity_threshold": 2.2268731306e-05
   },
   "prior_resource_gap_witness": {
+    "depolarized_t_source": {
+      "G_bits": 0.152175104935,
+      "depolarization_nu": 0.01,
+      "optimal_free_fidelity": 0.899892700045,
+      "optimal_free_weight": 0.034142135624,
+      "strict_gap_in_wrong_direction_bits": 0.075903513033,
+      "t_eigenstate_error": 0.005,
+      "two_input_G_bits": 0.30435020987
+    },
     "optimal_free_fidelity": 0.916838559179,
     "scope": "Values; optimizer and additivity are justified in the written account.",
     "source_t_eigenstate_error": 0.01,
     "strict_gap_in_wrong_direction_bits": 0.022074052292,
     "target_D_alpha_bits_for_alpha_at_least_half": 0.228446696836,
     "two_input_D_half_bits": 0.250520749128
+  },
+  "t_stabilizer_overlaps": {
+    "T": {
+      "exponent_bits": 0.228446696836,
+      "maximal_commuting_pauli_subspaces": 3,
+      "maximum_overlap": 0.853553390593,
+      "pure_stabilizer_projectors": 6,
+      "qubits": 1
+    },
+    "T_tensor_T": {
+      "exponent_bits": 0.456893393673,
+      "maximal_commuting_pauli_subspaces": 15,
+      "maximum_overlap": 0.728553390593,
+      "pure_stabilizer_projectors": 60,
+      "qubits": 2
+    }
   }
 }
