@@ -1,442 +1,497 @@
-# Thirty milestones for catalytic magic memory
+# Understanding catalytic magic cost
 
-This map follows the project's scientific dependencies through exactly 30 understanding targets. Phase I contains 13 background/preliminaries milestones: state and channel language, stabilizer resources, distinguishability, and complete memory accounting come together in the stationary-factory model. Phase II contains 17 narrative/innovation milestones: the converse mechanism and the inherited construction lead to the matched memory law and its scope.
+This map organizes the scientific account into exactly 30 milestones. Its question is how much magic and memory a reusable factory must retain when a fixed noisy source supplies a fixed number of fresh inputs for each increasingly accurate output. The map identifies conceptual dependencies and authoritative sources. Detailed proofs and specialist calculations remain in the scientific pages. Use this map alongside the [Chitambar–Gour bridge](CHITAMBAR_GOUR_BRIDGE.md).
 
-The single educational anchor is John Watrous, *The Theory of Quantum Information* (2018). The [Watrous bridge](WATROUS_BRIDGE.md#targeted-reading-from-the-single-anchor) identifies the relevant sections and translates their conventions. Stabilizer-specific identities, catalytic conversions, and distillation codes are research dependencies identified in the canonical science and references. Full statements and proofs remain in [science/](../science/README.md).
+## Allocation and reading structure
 
-The map covers the load-bearing ideas and their connections. Specialist calculations and additional technical detail remain in the linked scientific sources.
+The **background/preliminaries phase, M01–M12**, moves from individual states, operations, and accuracy criteria to the complete factory model. Twelve milestones are needed because the argument joins physical stabilizer control, geometric and entropic resource measures, operator comparison, and correlated catalysis. M12 integrates these ingredients into one precise question.
 
-## Overview route
+The **narrative/innovation phase, M13–M30**, follows two complementary arguments. M13–M21 assemble local reuse and comparison steps into the retained-resource converse and its distinction from earlier bounds. M22–M27 assemble an imported batch protocol into an exactly reusable CCZ factory with complete accounting. M28–M30 combine the arguments, identify their common scope, and state the contribution as a whole. The larger allocation to this phase reflects the project's central work: connecting an impossibility mechanism to a construction that attains its asymptotic order.
 
-| Milestones | Local ingredients | Role in the complete account |
-| --- | --- | --- |
-| [M01–M04](#m01) | States, measurements, correlations, and channels | Describe a noisy input, an emitted state, and a deterministic physical process |
-| [M05–M10](#m05) | Free states, source weight, resource monotones, and target overlap | Supply the objects that the converse compares |
-| [M11–M13](#m11) | Quantum memory, classical controllers, and exact return | Integrate the background into the complete factory model |
-| [M14–M22](#m14) | Reuse, a free-input comparison, and binary distinguishability | Establish finite and logarithmic memory necessity and its precise distinction from prior bounds |
-| [M23–M29](#m23) | Batch distillation, a cyclic catalyst, and resource accounting | Establish achievability with the same source and return convention |
-| [M30](#m30) | The lower and upper statements with their quantifiers aligned | Synthesize the matched theorem, physical meaning, and limitations |
+The single educational anchor is Eric Chitambar and Gilad Gour, [*Quantum Resource Theories*](https://doi.org/10.1103/RevModPhys.91.025001), Reviews of Modern Physics **91**, 025001 (2019), with the [arXiv version](https://arxiv.org/abs/1806.06107v3) available openly. Anchor section labels below follow the PDF's lettered subsections; the HTML edition renders these as numbered subsections. For example, III.A corresponds to III.1, IV.A.5 to IV.1.5, and V.C to V.3.
 
-## Phase I — Background/preliminaries
+Anchor pointers supply background, not the later research results. In particular, the review uses root fidelity and describes product-return catalysis in V.C. This project uses squared fidelity and permits correlations while returning the catalyst marginal exactly. Those distinctions are explicit understanding targets. Research citations in the project remain proof dependencies rather than additional educational anchors.
 
-<a id="m01"></a>
+## Phase I: Background/preliminaries
 
-### M01 — Pure targets and noisy density operators
+<a name="m01"></a>
 
-**Central question.** What does it mean to supply a noisy quantum state while seeking a pure target?
+### M01: States, noise, and retained registers
 
-**Understanding target.** Distinguish a pure-state projector, a density operator, and a convex mixture. Interpret a depolarized source as a physical input state whose mixture component is not automatically available as a classical label.
+**ID and phase:** M01; background/preliminaries.
 
-**Dependencies and story role.** No earlier milestone. This introduces the individual state objects from which the factory model is built.
+**Central question:** What physical objects are supplied, emitted, and retained by a magic-state factory?
 
-**Conceptual connection.** Density operators let the same mathematical description include noisy sources, pure targets, and mixed catalysts.
+**Understanding target:** Distinguish a quantum register from its density operator, a pure target from a noisy input, and a joint state from its marginals. Identify the source register, output register, and catalyst register without assuming their final joint state is a product.
 
-**Sources.** [Source states and positive free components](../science/model.md#4-a-positive-free-component-in-the-source); [the explicit CCZ source](../science/construction.md#1-source-target-and-statement). Watrous §2.1.2, Definition 2.5; [state-language bridge](WATROUS_BRIDGE.md#states-registers-and-free-resources).
+**Dependencies and story role:** No earlier milestones. Establishes the local objects used throughout both phases.
 
-<a id="m02"></a>
+**Conceptual connection:** The division into supplied, emitted, and retained registers makes the later division between consumed and stored resources precise.
 
-### M02 — Measurements, infidelity, and error conventions
+**Source pointers:** [Factory model](../science/model.md), “Source, target and one round”; [interpretation](../science/interpretation.md), “Three costs.” C&G §II provides state and subsystem notation.
 
-**Central question.** Which probability measures the quality of an emitted approximation to a pure target?
+<a name="m02"></a>
 
-**Understanding target.** Interpret target overlap as the acceptance probability of a binary measurement. Distinguish this overlap from Watrous's root fidelity, and the project's half trace norm from the book's trace-distance naming convention. Explain why translating the error parameter matters.
+### M02: Deterministic channels and operator order
 
-**Dependencies and story role.** [M01](#m01). The target becomes an operational quality criterion rather than only a desired ket.
+**ID and phase:** M02; background/preliminaries.
 
-**Conceptual connection.** The same target projector defines output infidelity and later becomes the analytical test in the converse.
+**Central question:** Which mathematical properties let a comparison of input states survive physical processing?
 
-**Sources.** [Infidelity and trace distance](../science/construction.md#7-infidelity-and-trace-distance). Watrous §2.3.1, Definition 2.34; §3.2, Definition 3.11; Proposition 3.13; Theorem 3.33; [convention translation](WATROUS_BRIDGE.md#notation-and-error-conventions).
+**Understanding target:** Explain complete positivity, trace preservation, positive-semidefinite order, and expectation values of positive measurement operators. Distinguish a normalized deterministic output from a conditioned successful branch.
 
-<a id="m03"></a>
+**Dependencies and story role:** M01. Supplies the local channel facts behind both the converse and the deterministic construction.
 
-### M03 — Marginals, correlations, and classical flags
+**Conceptual connection:** A positive operator inequality can become a bound on an observable failure probability after a physical channel.
 
-**Central question.** What information is preserved, and what is lost, when only a subsystem's state is specified?
+**Source pointers:** [Factory model](../science/model.md), “Free states and operations”; [reuse converse](../science/reuse_converse.md), “2. Compare with free source inputs”; [interpretation](../science/interpretation.md), “Heralding and source variation.” C&G §§II and V.A supply channel and conversion background.
 
-**Understanding target.** Distinguish a joint state from its reduced states and explain why fixed marginals do not imply a product. Recognize a genuinely classical–quantum joint state; a diagonal label marginal alone does not establish that structure.
+<a name="m03"></a>
 
-**Dependencies and story role.** [M01](#m01). This extends the local state description to a source, memory, controller, and emitted systems.
+### M03: A composable free-operation model
 
-**Conceptual connection.** Correlated catalysis and the phase-labelled construction both depend on retaining the correct joint-state description.
+**ID and phase:** M03; background/preliminaries.
 
-**Sources.** [Independent blocks and sequential reuse](../science/model.md#3-independent-fresh-blocks-and-sequential-reuse); [classical–quantum memory](../science/model.md#arbitrarily-large-classical-storage). Watrous §§2.1.3 and 2.2.3, especially Eq. (2.170); [state-language bridge](WATROUS_BRIDGE.md#states-registers-and-free-resources).
+**Central question:** What must remain free when a protocol is embedded inside a larger sequence of operations?
 
-<a id="m04"></a>
+**Understanding target:** Identify free states and deterministic free channels, and explain the roles of composition, identity extension, free ancillas, and discarding. Distinguish preservation of free states on an isolated system from a closure assumption that permits correlated spectator systems.
 
-### M04 — Channels, determinism, and discarded records
+**Dependencies and story role:** M01–M02. Builds a framework in which one-round operations can be composed into the experiments used later.
 
-**Central question.** How does a channel represent a complete deterministic quantum process?
+**Conceptual connection:** Resource theory constrains entire physical procedures, including untouched registers and discarded outputs, rather than only a conversion on a single isolated state.
 
-**Understanding target.** Explain complete positivity, trace preservation, and the inclusion of measurement outcomes and discarded registers in a channel. Distinguish an unconditional trace-preserving protocol from a success-conditioned operation.
+**Source pointers:** [Factory model](../science/model.md), “Free states and operations.” C&G §§III.A and III.C.1 provide tensor-product and complete-preservation structure.
 
-**Dependencies and story role.** [M02](#m02), [M03](#m03). States and measurements are assembled into processes that can act within a larger correlated system.
+<a name="m04"></a>
 
-**Conceptual connection.** Trace preservation supports repeated-use marginal arguments, while positivity supports the comparison of two different source inputs.
+### M04: Stabilizer control and magic inputs
 
-**Sources.** [Free states and operations](../science/model.md#1-free-states-and-operations); [a stationary call](../science/model.md#2-a-stationary-call). Watrous §§2.2.1–2.2.2, Definition 2.13 and Corollary 2.27.
+**ID and phase:** M04; background/preliminaries.
 
-<a id="m05"></a>
+**Central question:** Why is a noisy nonstabilizer state a resource when Clifford control is freely available?
 
-### M05 — Stabilizer operations and computational magic
+**Understanding target:** Identify stabilizer states, their convex hull, Clifford unitaries, Pauli measurement, classical feed-forward, and discarding as the physical setting. Distinguish a resource state from a nonfree gate, and distinguish the physical stabilizer-operation class from a larger mathematical free-operation class.
 
-**Central question.** Which states and operations are free in this factory, and what resource does a magic state supply?
+**Dependencies and story role:** M03. Specializes the general framework to the computational resource studied by the project.
 
-**Understanding target.** Identify the convex stabilizer free set and the physical stabilizer-operation toolbox. Distinguish the explicitly defined computational T and CCZ targets from free states, and keep source magic and catalyst magic visible in the accounting.
+**Conceptual connection:** The converse can use broad structural assumptions while achievability must exhibit operations permitted in the physical stabilizer model.
 
-**Dependencies and story role.** [M01](#m01), [M04](#m04). The generic channel framework acquires the resource restrictions relevant to fault-tolerant quantum computation.
+**Source pointers:** [Factory model](../science/model.md), “Free states and operations”; [CCZ construction](../science/cyclic_construction.md), “Statement.” C&G §IV.A.5 supplies the magic-state setting.
 
-**Conceptual connection.** A factory's limitation depends on both its supplied states and its allowed transformations.
+<a name="m05"></a>
 
-**Sources.** [Free operations](../science/model.md#1-free-states-and-operations); [target conventions](../science/model.md#5-the-target-overlap-assumption). Watrous §§2.1.2 and 2.2.1 supply the general language; the stabilizer-specific bridge is in [states, registers, and free resources](WATROUS_BRIDGE.md#states-registers-and-free-resources) and [B2019](../references/related-work.md#b2019).
+### M05: Pure-target accuracy and fidelity
 
-<a id="m06"></a>
+**ID and phase:** M05; background/preliminaries.
 
-### M06 — Positive free components of noisy sources
+**Central question:** What does the error of a factory output measure?
 
-**Central question.** What does a positive free component say about a noisy input?
+**Understanding target:** Relate pure-target infidelity to the target projector's failure probability. Distinguish squared fidelity, root fidelity, trace distance, and purified distance, including the direction of the conversions used in this project. Recognize that numerical precision coefficients depend on the convention.
 
-**Understanding target.** Interpret positive-semidefinite domination as a mixture containing a normalized free state. Explain why full rank supplies such a component and why its weight is neither a heralded branch nor a measure of the source's total magic.
+**Dependencies and story role:** M01–M02. Fixes the accuracy language before any resource inequality is compared.
 
-**Dependencies and story role.** [M01](#m01), [M05](#m05). This identifies the input property that drives the converse.
+**Conceptual connection:** Purity turns an abstract fidelity requirement into a binary probability statement, enabling the converse's target test.
 
-**Conceptual connection.** A spectral property of one noisy state becomes an operator inequality that survives tensoring and positive maps.
+**Source pointers:** [Factory model](../science/model.md), “Fidelity and resource conventions”; [CCZ construction](../science/cyclic_construction.md), “7. Error conventions and scope.” C&G §II uses root fidelity; the project's fidelity is its square.
 
-**Sources.** [Source domination](../science/model.md#4-a-positive-free-component-in-the-source); [the inherited free-component method](../references/related-work.md#fl2022). Watrous §1.1.2, positive operators and operator order, and §2.1.2.
+<a name="m06"></a>
 
-<a id="m07"></a>
+### M06: Free fidelity as retained resource
 
-### M07 — Free operations with retained reference systems
+**ID and phase:** M06; background/preliminaries.
 
-**Central question.** Why must the free-operation condition remain valid when other registers are retained?
+**Central question:** How does closeness to the free-state set quantify stored magic?
 
-**Understanding target.** Distinguish stabilizer preservation on an isolated input from complete stabilizer preservation with a reference. Explain why physical stabilizer operations satisfy the latter requirement and why old correlated outputs matter for sequential resource accounting.
+**Understanding target:** Define maximum free fidelity and its negative base-two logarithm. Explain why a free channel can increase maximum free fidelity while its logarithmic resource cannot increase. Distinguish this monotonicity from additivity under tensor products.
 
-**Dependencies and story role.** [M03](#m03), [M04](#m04), [M05](#m05). The operation class is made precise enough for a reusable device.
+**Dependencies and story role:** M03–M05. Introduces the resource quantity bounded by the central theorem.
 
-**Conceptual connection.** The role of a reference system in complete positivity has a resource-preservation counterpart, although the two conditions are distinct.
+**Conceptual connection:** Fidelity data processing turns a geometric comparison with free states into an operational restriction on a catalyst.
 
-**Sources.** [Complete stabilizer preservation](../science/model.md#1-free-states-and-operations). Watrous §2.2.2, Theorem 2.22; [state and operation bridge](WATROUS_BRIDGE.md#states-registers-and-free-resources).
+**Source pointers:** [Factory model](../science/model.md), “Fidelity and resource conventions”; [reuse converse](../science/reuse_converse.md), “3. Use a channel whose only resource input is the catalyst.” C&G §§VI.A.2, VI.B, and VI.D supply monotonicity and geometric context.
 
-<a id="m08"></a>
+<a name="m07"></a>
 
-### M08 — Relative entropy and data processing
+### M07: Entropic measures, operator domination, and memory size
 
-**Central question.** How does relative entropy turn distinguishability into an inequality under a channel?
+**ID and phase:** M07; background/preliminaries.
 
-**Understanding target.** Interpret quantum relative entropy, its support condition, and its units. Explain why a channel or measurement cannot increase it, including when a quantum comparison is reduced to two classical outcomes.
+**Central question:** Which different resource quantities can express the cost of the same catalyst?
 
-**Dependencies and story role.** [M02](#m02), [M04](#m04). This provides the information-theoretic tool used in both resource monotonicity and the final binary test.
+**Understanding target:** Distinguish logarithmic free fidelity, relative entropy to the free set, minimized max-relative entropy, and qubit count. Identify the ordering $`M_{\mathcal F}\ge E_{\mathcal F}\ge G_{\mathcal F}`$ and the special role of the free maximally mixed state in bounding magic measures by register size.
 
-**Conceptual connection.** A lower bound on distinguishability after a simple test is also a lower bound before that test.
+**Dependencies and story role:** M02–M06. Establishes the cost vocabulary needed to interpret different lower bounds without conflating them.
 
-**Sources.** [Resource monotonicity](../science/converse.md#4-only-the-initial-catalyst-supplies-magic-in-the-comparison-run); [binary testing](../science/converse.md#5-a-binary-measurement-proves-the-finite-bounds). Watrous §5.2.1, Definition 5.18, and §5.2.3, Theorem 5.35.
+**Conceptual connection:** Entropic distinguishability, operator domination, and physical memory size describe related but unequal constraints on stored resource.
 
-<a id="m09"></a>
+**Source pointers:** [Resource costs](../science/resource_costs.md), “Which resource measures inherit the bound?” and “A stronger direct bound for max-relative entropy and qubits.” C&G §§VI.C and VI.E.2 supply entropy and robustness context; the dimension implication is specified locally.
 
-### M09 — Relative entropy of magic as a resource budget
+<a name="m08"></a>
 
-**Central question.** How can distinguishability from the entire free set quantify stored magic?
+### M08: A noisy state's free component
 
-**Understanding target.** Explain the minimization defining relative entropy of magic and derive its nonincrease under a free channel from data processing. Distinguish this monotonicity statement from additivity across two arbitrary resource states.
+**ID and phase:** M08; background/preliminaries.
 
-**Dependencies and story role.** [M05](#m05), [M07](#m07), [M08](#m08). The information measure becomes a resource budget attached to the catalyst.
+**Central question:** What does the inequality $`\rho\ge p\gamma`$ say about the supplied noisy state?
 
-**Conceptual connection.** The proof will charge a comparison experiment to its initial magic without needing a catalyst–target additivity theorem.
+**Understanding target:** Interpret a positive normalized free component, distinguish a valid weight from the largest possible weight, and explain why full rank supplies one when the maximally mixed state is free. Understand that a free weight can vanish for pure resource inputs.
 
-**Sources.** [Stored magic](../science/model.md#6-stored-magic-and-quantum-memory); [the monotonicity derivation](../science/converse.md#4-only-the-initial-catalyst-supplies-magic-in-the-comparison-run). Watrous §§5.2.1 and 5.2.3; [binary-test and memory bridge](WATROUS_BRIDGE.md#from-a-binary-test-to-quantum-memory).
+**Dependencies and story role:** M02–M04. Introduces the source property that will be amplified across repeated uses.
 
-<a id="m10"></a>
+**Conceptual connection:** The free-state geometry of one noisy input becomes a positive comparison contribution inside a long deterministic protocol.
 
-### M10 — Target tensor powers and stabilizer overlap
+**Source pointers:** [Factory model](../science/model.md), “Source, target and one round”; [magic targets](../science/magic_targets.md), “A useful source free weight”; [related work](../references/RELATED_WORK.md#fangliu2022). C&G §III.D.1 supplies convex-set background; the purification comparison is a separate research ingredient.
 
-**Central question.** How well can a free state pass the test for many ideal target copies?
+<a name="m09"></a>
 
-**Understanding target.** Interpret the maximum free overlap with a target tensor power and the known exponential rates for computational T and CCZ. Distinguish a single-copy overlap calculation, a tensor-power identity, and multiplicativity involving an arbitrary catalyst.
+### M09: Tensor-power target benchmarks
 
-**Dependencies and story role.** [M02](#m02), [M03](#m03), [M05](#m05). This supplies the target-side input needed alongside the source's positive free component.
+**ID and phase:** M09; background/preliminaries.
 
-**Conceptual connection.** Stabilizer geometry makes a joint ideal-target test increasingly selective.
+**Central question:** How well can free states imitate several ideal target outputs together?
 
-**Sources.** [Target overlap assumption](../science/model.md#5-the-target-overlap-assumption); [B2019](../references/related-work.md#b2019); [what finite enumeration establishes](../verification/README.md#stabilizer-enumeration). Watrous §1.1.2 on tensor-product operators and §2.3.1 on measurements.
+**Understanding target:** Define the actual tensor-power overlap sequence $`f_\ell`$, distinguish it from an assumed product of single-copy overlaps, and identify the established exponential sequences for T and CCZ. Distinguish finite enumeration of small cases from the theorem establishing every tensor power.
 
-<a id="m11"></a>
+**Dependencies and story role:** M04–M06. Supplies the target benchmark that competes with the source free-component weight in the converse.
 
-### M11 — Quantum memory with unrestricted classical storage
+**Conceptual connection:** A computational target's geometry becomes an exponential scale against which repeated-output accuracy can be assessed.
 
-**Central question.** Can an arbitrarily large classical controller hide the quantum resource required by the factory?
+**Source pointers:** [Magic targets](../science/magic_targets.md), “T and CCZ conventions”; [verification account](../verification/README.md); [Bravyi dependency](../references/RELATED_WORK.md#bravyi2019). C&G §§IV.A.5 and VI.D provide background; the exact overlap and multiplicativity results come from the cited research.
 
-**Understanding target.** Explain why relative entropy of magic is bounded by the number of quantum qubits even for a complete classical–quantum catalyst. Use the matching classical distribution and a maximally mixed quantum comparison state; identify coherently stored labels as quantum memory.
+<a name="m10"></a>
 
-**Dependencies and story role.** [M03](#m03), [M09](#m09). Stored magic is connected to a concrete memory resource.
+### M10: Exact marginal catalysis
 
-**Conceptual connection.** The classical label entropy cancels in the block-diagonal comparison, leaving the quantum contribution.
+**ID and phase:** M10; background/preliminaries.
 
-**Sources.** [Classical–quantum memory bound](../science/model.md#arbitrarily-large-classical-storage). Watrous §2.2.3, Eq. (2.170), and §5.2.1, Definition 5.18; [memory bridge](WATROUS_BRIDGE.md#from-a-binary-test-to-quantum-memory).
+**Central question:** In what sense can a catalyst be returned unchanged while it becomes correlated with the output?
 
-<a id="m12"></a>
+**Understanding target:** Distinguish equality of the catalyst marginal from product return of the joint state. Identify the independent fresh-input requirement, the inclusion of all reusable nonfree memory, and the difference between unconditional marginals and states conditioned on an earlier outcome.
 
-### M12 — Exact correlated catalysis and the complete controller
+**Dependencies and story role:** M01–M05. Establishes the exact return convention that makes the project's factory model both permissive and reusable.
 
-**Central question.** What exactly must return unchanged for a catalyst to support the next call?
+**Conceptual connection:** Catalysis concerns persistence of a resource under a specified transformation; correlations determine which persistence statement is actually available.
 
-**Understanding target.** Distinguish exact marginal return from product return and from return only on success. Include the complete persistent controller and its correlations in the returned state, while separating temporary records that are discarded.
+**Source pointers:** [Factory model](../science/model.md), “Source, target and one round”; [interpretation](../science/interpretation.md), “Correlations and the meaning of reuse.” C&G §V.C gives product-return catalysis as background. The marginal-return model is defined locally and its reuse principle is attributed to Fang and Liu.
 
-**Dependencies and story role.** [M03](#m03), [M04](#m04), [M07](#m07), [M11](#m11). The state, operation, and accounting foundations are joined in the catalytic interface.
+<a name="m11"></a>
 
-**Conceptual connection.** A stationary density operator can include a classical phase that advances in each realization.
+### M11: The precision limit and its three costs
 
-**Sources.** [Stationary call and complete controller](../science/model.md#2-a-stationary-call); [FL2026](../references/related-work.md#fl2026). Watrous §§2.1.3 and 2.2.3; [two-phase return example](WATROUS_BRIDGE.md#a-complete-two-phase-return-example).
+**ID and phase:** M11; background/preliminaries.
 
-<a id="m13"></a>
+**Central question:** What is held fixed, and what may grow, as the required output error tends to zero?
 
-### M13 — The complete stationary-factory model
+**Understanding target:** Keep the noisy source, target, and per-round input count fixed while allowing the channel and finite-dimensional catalyst to depend on accuracy. Distinguish ongoing source consumption, retained catalyst resource, and source-only initialization from transient processing workspace.
 
-**Central question.** Which quantities and promises define the memory-minimization problem?
+**Dependencies and story role:** M07–M10. Converts the one-round task into the precise family of tasks addressed by an asymptotic cost law.
 
-**Understanding target.** Assemble the independent source block, fixed input budget, pure target, allowed channel, exact complete marginal return, and output error into one model. Distinguish an accuracy-dependent catalyst family from a changing source or input budget, and recognize that a lower bound alone need not establish feasibility.
+**Conceptual connection:** A precision limit for a reusable device has different quantifiers from the usual limit of converting larger and larger input batches.
 
-**Dependencies and story role.** [M06](#m06), [M10](#m10), [M11](#m11), [M12](#m12). This is the background phase's synthesis.
+**Source pointers:** [Factory model](../science/model.md), “Source, target and one round”; [interpretation](../science/interpretation.md), “Three costs” and “Scope of the optimality statement.” C&G §§V.A–V.C provide conversion context; the fixed-input precision limit is specified by this project.
 
-**Conceptual connection.** The meaning of the final asymptotic law comes from its fixed parameters and the resource being minimized.
+<a name="m12"></a>
 
-**Sources.** [Model and resource accounting](../science/model.md); [the minimized quantity](../science/model.md#the-quantity-minimized-in-the-matching-law). Watrous §§2.1.2, 2.2.1, and 5.2.1 supply the state, process, and resource-measure language.
+### M12: Synthesis of the factory question
 
-## Phase II — Narrative/innovation
+**ID and phase:** M12; background/preliminaries.
 
-<a id="m14"></a>
+**Central question:** Can an exactly reusable factory make its outputs arbitrarily accurate while keeping both ongoing input consumption and retained resource bounded?
 
-### M14 — Reuse without independent outputs
+**Understanding target:** Assemble the states, free operations, positive source weight, pure-target benchmark, return condition, and cost definitions into the complete mathematical task. Explain why a bound on source consumption alone cannot settle the retained-resource question, and why a retained-resource lower bound needs an achievability comparison to establish optimal order.
 
-**Central question.** Why does every nominal emission retain its accuracy guarantee as correlations accumulate?
+**Dependencies and story role:** M01–M11. Ends the background phase by integrating its local concepts into the project's global problem.
 
-**Understanding target.** Explain the reuse induction using the reduced state of the fresh block and catalyst. Identify the two separate facts that fresh inputs are independent and that later trace-preserving operations leave earlier output marginals unchanged.
+**Conceptual connection:** Resource conversion, catalysis, and precision become one operational accounting question with distinct necessary and sufficient claims.
 
-**Dependencies and story role.** [M04](#m04), [M12](#m12), [M13](#m13). This begins the converse with the operational consequence of exact stationarity.
+**Source pointers:** [Factory model](../science/model.md), “Scientific results and reading route”; [interpretation](../science/interpretation.md), opening and “Three costs.” C&G §§III.A, V.C, and VI.A supply the organizing framework; the complete question and its quantifiers are local.
 
-**Conceptual connection.** Local marginal invariance is sufficient for repeated nominal accuracy despite a correlated global history.
+## Phase II: Narrative/innovation
 
-**Sources.** [Sequential reuse proof](../science/converse.md#2-sequential-reuse-preserves-every-nominal-output-guarantee). Watrous §§2.1.3 and 2.2.1; [reuse-to-comparison bridge](WATROUS_BRIDGE.md#from-correlated-reuse-to-the-counterfactual).
+<a name="m13"></a>
 
-<a id="m15"></a>
+### M13: Reuse despite output correlations
 
-### M15 — From marginal accuracy to a joint target test
+**ID and phase:** M13; narrative/innovation.
 
-**Central question.** What joint guarantee follows from many individually accurate but correlated outputs?
+**Central question:** Why does an exact catalyst marginal suffice to preserve each later output's accuracy?
 
-**Understanding target.** Explain the commuting-projector union bound and its linear accumulation of worst-case infidelity. Distinguish this guaranteed joint overlap from an assertion that the outputs are independent.
+**Understanding target:** Follow the marginal induction: an independent fresh block and the unchanged catalyst marginal reproduce the same reduced channel input, while a trace-preserving operation leaves earlier output marginals unchanged. Distinguish this unconditional conclusion from independence or identical conditional performance.
 
-**Dependencies and story role.** [M02](#m02), [M03](#m03), [M14](#m14). Separate emission guarantees become a single test of the whole retained stream.
+**Dependencies and story role:** M02–M03, M10, M12. Starts the narrative with the local reuse mechanism needed to create a long output sequence.
 
-**Conceptual connection.** Projectors on different output registers turn the classical union-bound principle into an operator inequality.
+**Conceptual connection:** Local channel inputs can remain stationary even when the full history develops correlations.
 
-**Sources.** [Joint nominal accuracy](../science/converse.md#2-sequential-reuse-preserves-every-nominal-output-guarantee); [application to repeated use](../science/resources.md#6-correlations-and-repeated-use). Watrous §1.2.2, Eq. (1.246), and §2.3.1.
+**Source pointers:** [Reuse converse](../science/reuse_converse.md), “1. Repetition preserves the marginal promise”; [Fang–Liu attribution](../references/RELATED_WORK.md#fangliu2026). C&G §V.C supplies catalytic context, not this correlated-reuse result.
 
-<a id="m16"></a>
+<a name="m14"></a>
 
-### M16 — The all-free-input comparison
+### M14: A joint target test without independent outputs
 
-**Central question.** What does nominal accuracy imply when every fresh source block is replaced by a free state?
+**ID and phase:** M14; narrative/innovation.
 
-**Understanding target.** Follow tensor domination through the same positive sequential map and understand the resulting error amplification by the inverse all-free weight. Explain why the comparison is a mathematical consequence of linearity, not a heralded capability.
+**Central question:** What collective accuracy statement follows from the individual output guarantees?
 
-**Dependencies and story role.** [M06](#m06), [M07](#m07), [M15](#m15). This connects repeated accuracy to a counterfactual experiment with no fresh magic.
+**Understanding target:** Explain the commuting-projector union bound giving joint product-target infidelity at most $`\ell\varepsilon`$. Recognize it as a sufficient upper estimate, without inferring product structure or a necessary per-output error allocation for every correlated stream.
 
-**Conceptual connection.** The small free component of each source becomes a rare but quantitatively constraining component of the whole input stream.
+**Dependencies and story role:** M05, M09, M13. Converts local marginal accuracy into the global test used by the proof.
 
-**Sources.** [Free-input comparison proof](../science/converse.md#3-replace-fresh-inputs-by-free-states-in-a-comparison-experiment). Watrous §1.1.2 on operator order and positive maps; [counterfactual bridge](WATROUS_BRIDGE.md#from-correlated-reuse-to-the-counterfactual).
+**Conceptual connection:** A product target defines a collective event even when the actual output state is correlated.
 
-<a id="m17"></a>
+**Source pointers:** [Reuse converse](../science/reuse_converse.md), “1. Repetition preserves the marginal promise”; [interpretation](../science/interpretation.md), “Correlations and the meaning of reuse.” C&G §II supplies measurement background; the operator estimate is derived locally.
 
-### M17 — Charging the comparison output to the initial catalyst
+<a name="m15"></a>
 
-**Central question.** Which initial resource can account for the comparison experiment's accurate output?
+### M15: Replace the fresh inputs by their free component
 
-**Understanding target.** Explain why appending free inputs, sequential free processing, and discarding define a free map from the initial catalyst to the emitted sequence. Identify that the comparison may consume or alter the catalyst completely.
+**ID and phase:** M15; narrative/innovation.
 
-**Dependencies and story role.** [M09](#m09), [M16](#m16). The comparison's output quality becomes a claim against a finite initial resource budget.
+**Central question:** What survives when the entire repeated protocol is fed free source inputs instead?
 
-**Conceptual connection.** Nominal return enables repetition; resource monotonicity on a different run supplies the cost, without requiring return on that run.
+**Understanding target:** Derive the comparison $`\Omega_\ell\ge p^{k\ell}\Xi_\ell`$ and the resulting comparison-state failure bound. Explain normalization, the exponential weight, and why the catalyst need not be returned in this second experiment.
 
-**Sources.** [Initial-catalyst resource bound](../science/converse.md#4-only-the-initial-catalyst-supplies-magic-in-the-comparison-run). Watrous §5.2.3, Theorem 5.35; [counterfactual bridge](WATROUS_BRIDGE.md#from-correlated-reuse-to-the-counterfactual).
+**Dependencies and story role:** M02–M03, M08, M13–M14. Builds the main operator comparison across the complete repeated channel.
 
-<a id="m18"></a>
+**Conceptual connection:** Tensor products multiply a single-input free weight, while complete positivity transports it through an arbitrarily complicated deterministic factory.
 
-### M18 — The finite binary and entropy converses
+**Source pointers:** [Reuse converse](../science/reuse_converse.md), “2. Compare with free source inputs”; [purification dependency](../references/RELATED_WORK.md#fangliu2022). C&G §§II and III.A supply channel-composition background; the free-component method has the separately cited provenance.
 
-**Central question.** How does a binary target test turn the comparison experiment into a finite catalyst-resource bound?
+<a name="m16"></a>
 
-**Understanding target.** Connect high comparison acceptance, small free-state acceptance, and relative-entropy data processing. Distinguish the conditions for the binary-divergence and entropy-form inequalities, and explain why the analytical test itself need not be a free stabilizer measurement.
+### M16: Isolate the catalyst as the resource input
 
-**Dependencies and story role.** [M08](#m08), [M10](#m10), [M16](#m16), [M17](#m17). This integrates the converse's components into its finite theorem.
+**ID and phase:** M16; narrative/innovation.
 
-**Conceptual connection.** Target geometry supplies distinguishability, and distinguishability certifies stored magic.
+**Central question:** Why does the comparison experiment constrain the initial catalyst rather than the total noisy input batch?
 
-**Sources.** [Finite theorem](../science/converse.md#theorem-1-finite-catalyst-resource-bound); [binary-test proof](../science/converse.md#5-a-binary-measurement-proves-the-finite-bounds). Watrous §§5.1.1 and 5.2.3, Theorem 5.35; [binary-test bridge](WATROUS_BRIDGE.md#from-a-binary-test-to-quantum-memory).
+**Understanding target:** Identify the free channel obtained by fixing all fresh inputs to free states, and establish $`F_{\mathcal F}(\tau)\le F_{\mathcal F}(\Xi_\ell)`$ with the correct direction. Explain which closure assumptions make the construction free.
 
-<a id="m19"></a>
+**Dependencies and story role:** M03, M06, M15. Turns the comparison experiment into a statement about retained resource alone.
 
-### M19 — Finite-horizon guarantees versus exact stationarity
+**Conceptual connection:** Removing every other resource input lets data processing assign the remaining operational capability to the catalyst.
 
-**Central question.** Which part of the converse actually requires a returned catalyst?
+**Source pointers:** [Reuse converse](../science/reuse_converse.md), “3. Use a channel whose only resource input is the catalyst.” C&G §§III.A, VI.A.2, and VI.B provide compositional monotonicity background.
 
-**Understanding target.** Separate a guaranteed-accuracy finite run from the stationary mechanism that certifies accuracy for every run length. Explain why the finite-horizon lemma permits an evolving controller but does not establish repeated accuracy from approximate one-call return.
+<a name="m17"></a>
 
-**Dependencies and story role.** [M14](#m14), [M18](#m18). The proven mechanism's quantifiers are made explicit before taking an asymptotic limit.
+### M17: The finite-error fidelity converse
 
-**Conceptual connection.** An operational certificate of repeated accuracy and the resource bound conditional on that accuracy have different assumptions.
+**ID and phase:** M17; narrative/innovation.
 
-**Sources.** [Finite-horizon lemma](../science/converse.md#finite-horizon-lemma). Watrous §§2.1.3 and 2.2.1; [reuse-to-comparison bridge](WATROUS_BRIDGE.md#from-correlated-reuse-to-the-counterfactual).
+**Central question:** How does a target test turn the comparison state's accuracy into a catalyst-resource bound?
 
-<a id="m20"></a>
+**Understanding target:** Combine the two-outcome fidelity inequality with the free target overlap to obtain the finite-error theorem for every integer repetition count. Distinguish the analytical measurement used for a bound from a free operation that the factory must implement. Identify why neither catalyst additivity nor an input-target resource gap enters.
 
-### M20 — Optimizing the horizon for logarithmic stored magic
+**Dependencies and story role:** M05–M06, M09, M14–M16. Completes the converse mechanism as one global necessary inequality.
 
-**Central question.** Why does the useful repetition count grow logarithmically with inverse output error?
+**Conceptual connection:** Ordinary distinguishability under a binary measurement bounds the resource content of a reusable device.
 
-**Understanding target.** Explain the balance between accumulating target resource and amplifying the nominal error on the all-free comparison. Interpret the selected horizon, the leading logarithmic coefficient, and the dependence of the remainder on fixed source parameters.
+**Source pointers:** [Reuse converse](../science/reuse_converse.md), “Finite-error theorem” and “3. Use a channel whose only resource input is the catalyst.” C&G §§II and VI.B provide fidelity-processing context; the theorem is derived in the project.
 
-**Dependencies and story role.** [M13](#m13), [M18](#m18), [M19](#m19). The finite theorem becomes the asymptotic necessity statement.
+<a name="m18"></a>
 
-**Conceptual connection.** Exponential source-weight suppression and exponential target-overlap suppression meet at a logarithmic horizon.
+### M18: A bounded resource budget sets an accuracy floor
 
-**Sources.** [Horizon optimization](../science/converse.md#6-optimize-the-number-of-repetitions); [fixed-copy specialization](../science/converse.md#fixed-fresh-copy-count). Watrous §5.1.1 supplies the entropy and logarithm conventions; [memory bridge](WATROUS_BRIDGE.md#from-a-binary-test-to-quantum-memory).
+**ID and phase:** M18; narrative/innovation.
 
-<a id="m21"></a>
+**Central question:** What does the finite-error theorem forbid when stored fidelity resource is bounded?
 
-### M21 — Finite-memory error floors
+**Understanding target:** Express the theorem as an error floor optimized over integer repetitions. Explain why $`f_\ell\to0`$ suffices to make that floor positive for every finite resource budget, even without a uniform catalyst-dimension bound. Keep necessity distinct from a construction achieving the floor.
 
-**Central question.** What accuracy is impossible when the catalyst's stored resource is fixed?
+**Dependencies and story role:** M06, M09, M17. Gives the converse an operational meaning before taking an asymptotic limit.
 
-**Understanding target.** Interpret the explicit positive error floor and the exclusion of exact pure-target output at finite stored resource. Translate the resource bound into a quantum-qubit bound while allowing arbitrary mixed catalysts and free classical storage.
+**Conceptual connection:** A resource measure can constrain a device's accuracy more directly than its Hilbert-space dimension does.
 
-**Dependencies and story role.** [M11](#m11), [M18](#m18), [M20](#m20). The asymptotic divergence is connected back to a finite device.
+**Source pointers:** [Resource costs](../science/resource_costs.md), “A finite stored-resource budget gives an error floor.” C&G §VI.A.2 supplies monotone-based restrictions; the explicit floor is local.
 
-**Conceptual connection.** Choosing a horizon that demands more magic than the catalyst contains converts the finite inequality into a contradiction.
+<a name="m19"></a>
 
-**Sources.** [Explicit error floor](../science/converse.md#7-an-explicit-error-floor); [quantum-memory consequences](../science/converse.md#8-consequences-for-quantum-memory). Watrous §§5.2.1–5.2.2; [memory bridge](WATROUS_BRIDGE.md#from-a-binary-test-to-quantum-memory).
+### M19: Balance repetition against source noise
 
-<a id="m22"></a>
+**ID and phase:** M19; narrative/innovation.
 
-### M22 — Why total input magic does not remove the obstruction
+**Central question:** Why does exponential target-overlap decay force logarithmic growth of stored resource?
 
-**Central question.** What does this converse add when the fresh inputs already contain substantial total magic?
+**Understanding target:** Explain the competition between target overlap $`2^{-a\ell}`$ and comparison error $`\ell\varepsilon p^{-k\ell}`$. Identify the repetition scale, the logarithmic correction, and the coefficient $`a/(a+kb)`$, with $`b=\log_2(1/p)`$. Preserve the fixed-source and fixed-input quantifiers.
 
-**Understanding target.** Distinguish a positive-free-component hypothesis from the strict input–target Rényi gap required by the closest catalyst-resource theorem. Explain what the two-input example establishes about theorem applicability, without treating it as an achievable two-input factory.
+**Dependencies and story role:** M08–M09, M11, M17–M18. Converts the finite bound into the project's precision law.
 
-**Dependencies and story role.** [M06](#m06), [M09](#m09), [M18](#m18), [M20](#m20). This places the converse's scope and contribution alongside its predecessors.
+**Conceptual connection:** Two exponential scales in a repeated experiment produce a resource cost proportional to the logarithm of inverse error.
 
-**Conceptual connection.** Sufficient total resource and the ability to purify it with bounded reusable memory are different questions.
+**Source pointers:** [Resource costs](../science/resource_costs.md), “Logarithmic fidelity-resource cost.” C&G §§V.B and VI.C supply asymptotic and entropic context; this optimization and coefficient are local.
 
-**Sources.** [Closest catalyst-resource bound](../references/related-work.md#rt2022); [explicit absence of the gap](../references/related-work.md#an-explicit-input-for-which-the-gap-is-absent). Watrous §5.2.1 supplies the relative-entropy foundation; the Rényi and magic-additivity ingredients are identified research dependencies.
+<a name="m20"></a>
 
-<a id="m23"></a>
+### M20: Separate inherited bounds from the stronger memory bound
 
-### M23 — A deterministic CCZ batch ingredient
+**ID and phase:** M20; narrative/innovation.
 
-**Central question.** What known batch process can supply accurate outputs at a constant input-to-output rate?
+**Central question:** Which catalyst costs inherit the fidelity bound, and which admit a stronger direct comparison?
 
-**Understanding target.** Identify the fixed noisy CCZ source, conversion cost, batch inputs, outputs, and correction radius. Explain why unsuccessful decoding still belongs to a deterministic channel and why source infidelity differs from its depolarizing mixture weight.
+**Understanding target:** Apply $`M\ge E\ge G`$ and the magic dimension bounds without reversing an implication. Explain how direct max-relative-entropy domination gives the stronger coefficient $`a/(kb)`$ for finite $`M`$ and qubits when $`kb>0`$, while the proved relative-entropy coefficient remains $`a/(a+kb)`$. Recognize that no coefficient is claimed optimal.
 
-**Dependencies and story role.** [M04](#m04), [M05](#m05), [M13](#m13). This introduces the construction ingredient needed to complement the converse.
+**Dependencies and story role:** M07, M15–M17, M19. Translates the abstract converse into distinct statements about stored magic and retained memory.
 
-**Conceptual connection.** A constant-rate batch provides the raw material for a stationary one-output factory.
+**Conceptual connection:** An order-based resource measure can control the target test more sharply than a fidelity comparison, but that improvement belongs only to the quantities the order argument bounds.
 
-**Sources.** [Source and upper statement](../science/construction.md#1-source-target-and-statement); [inherited batch protocol](../science/construction.md#2-the-inherited-batch-protocol); [WHY2025](../references/related-work.md#why2025). Watrous §§2.2.1 and 2.3.1 supply the channel and measurement language; the code theorem is a research dependency.
+**Source pointers:** [Resource costs](../science/resource_costs.md), “Which resource measures inherit the bound?” and “A stronger direct bound for max-relative entropy and qubits.” C&G §§VI.C and VI.E.2 supply the measure framework; the stronger comparison is local.
 
-<a id="m24"></a>
+<a name="m21"></a>
 
-### M24 — Local stochastic errors and a global exponential bound
+### M21: Locate the distinction from earlier catalytic bounds
 
-**Central question.** Why does the batch's whole-output error decrease exponentially below a fixed source threshold?
+**ID and phase:** M21; narrative/innovation.
 
-**Understanding target.** Connect independent faulty preparation groups, a decoding radius, and a union bound over uncorrectable patterns. Distinguish global batch infidelity from marginal infidelity and explain why passing the global bound to one marginal introduces no extra output-count factor.
+**Central question:** Which regimes does this converse reach beyond the compared resource-gap theorem?
 
-**Dependencies and story role.** [M02](#m02), [M15](#m15), [M23](#m23). The batch's qualitative correction capability becomes a usable accuracy-versus-size relation.
+**Understanding target:** Distinguish the earlier strict input-target Rényi gap from target-catalyst additivity. Explain why pure T and CCZ targets do have strong fidelity multiplicativity against arbitrary mixed catalysts. Use the noisy-T example to identify a fixed batch for which every allowed gap fails, without treating that example as an achievable factory.
 
-**Conceptual connection.** A probabilistic bound on a classical error pattern controls overlap with the entire pure output target.
+**Dependencies and story role:** M06–M10, M17–M20. Integrates the converse with its exact scientific provenance and prevents an incorrect novelty explanation.
 
-**Sources.** [Global exponential bound](../science/construction.md#3-a-global-exponential-error-bound). Watrous §1.2.2, Eq. (1.246), and §2.3.1; [batch-to-factory bridge](WATROUS_BRIDGE.md#from-a-batch-protocol-to-a-stationary-factory).
+**Conceptual connection:** A theorem's operational reach depends on all its hypotheses, and a separation of hypotheses is distinct from a construction in the separated regime.
 
-<a id="m25"></a>
+**Source pointers:** [Magic targets](../science/magic_targets.md), “Strong multiplicativity for a small pure target” and “Absence of every Renyi gap in the earlier converse”; [Rubboli–Tomamichel comparison](../references/RELATED_WORK.md#rubboli2022). C&G §§V.C, VI.A.4, and VI.C provide catalytic and additivity background; the later theorem comparison has separate research sources.
 
-### M25 — A fixed fresh-input budget and common block size
+<a name="m22"></a>
 
-**Central question.** How can every call consume the same number of source states while the required batch grows?
+### M22: A deterministic CCZ batch with a global guarantee
 
-**Understanding target.** Explain how the batch rate permits one accuracy-independent integer input budget. Account for discarded excess sources and free padding that makes a fresh source block and a padded output block have the same dimension.
+**ID and phase:** M22; narrative/innovation.
 
-**Dependencies and story role.** [M13](#m13), [M23](#m23). The variable-sized batch is recast into blocks suitable for a reusable interface.
+**Central question:** What batch-distillation capability is sufficient to begin a matching construction?
 
-**Conceptual connection.** Matching block dimensions enables the catalytic cycle without changing the charged source count.
+**Understanding target:** Identify the imported constant-rate CCZ protocol, its deterministic treatment of all decoder outcomes, and its global infidelity guarantee. Relate fixed depolarization $`\nu`$ to stochastic error $`7\nu/8`$ while keeping the valid free weight $`p=\nu`$ distinct. Identify the source regime and absence of a perfect magic seed.
 
-**Sources.** [Fixed budget and padding](../science/construction.md#4-one-fixed-fresh-input-budget). Watrous §1.1.2 on tensor products and §2.2.1 on channels; [batch-to-factory bridge](WATROUS_BRIDGE.md#from-a-batch-protocol-to-a-stationary-factory).
+**Dependencies and story role:** M02, M04–M05, M08–M09, M11–M12. Starts the constructive branch with a concrete physical batch operation.
 
-<a id="m26"></a>
+**Conceptual connection:** The same fixed noisy source must satisfy both the converse's free-component premise and the construction's small-error premise.
 
-### M26 — The cyclic catalyst and exact phase-inclusive return
+**Source pointers:** [CCZ construction](../science/cyclic_construction.md), “1. The batch protocol and its error guarantee”; [Wills–Hsieh–Yamasaki dependency](../references/RELATED_WORK.md#wills2025). C&G §§IV.A.5 and V.B provide distillation background; the batch theorem is a later imported result.
 
-**Central question.** Why does a buffer whose phase advances nevertheless return its complete marginal exactly?
+<a name="m23"></a>
 
-**Understanding target.** Interpret the mixture of raw-source prefixes, actual correlated batch-output prefixes, and classical phases. Follow how the wraparound branch and phase update restore the joint catalyst state, and why the emitted state is the average batch marginal with the inherited accuracy.
+### M23: Reach every sufficiently small requested error
 
-**Dependencies and story role.** [M03](#m03), [M12](#m12), [M24](#m24), [M25](#m25). This is the construction's central exact-return mechanism.
+**ID and phase:** M23; narrative/innovation.
 
-**Conceptual connection.** Stationarity of a mixed joint state can coexist with deterministic movement through its labelled components.
+**Central question:** Why does the batch family give logarithmic size at every small accuracy rather than only along a sparse subsequence?
 
-**Sources.** [Catalyst and exact return](../science/construction.md#5-the-catalyst-and-its-exact-return); [FL2026](../references/related-work.md#fl2026). Watrous §§2.1.3 and 2.2.3; [two-phase example](WATROUS_BRIDGE.md#a-complete-two-phase-return-example).
+**Understanding target:** Connect linear rate and decoding distance to exponential error suppression, and explain why bounded ratios of successive available code lengths are also needed. Use the explicit code family to select a batch with size $`O(\log(1/\varepsilon))`$ for each sufficiently small error.
 
-<a id="m27"></a>
+**Dependencies and story role:** M11, M19, M22. Makes the construction's asymptotic quantifier match the converse's precision limit.
 
-### M27 — Initialization from the same noisy source
+**Conceptual connection:** A continuous accuracy requirement must be realized using a discrete family of physical protocols.
 
-**Central question.** Can the required catalyst be prepared without an uncharged perfect magic seed?
+**Source pointers:** [CCZ construction](../science/cyclic_construction.md), “1. The batch protocol and its error guarantee” and “2. Code lengths can track every requested accuracy.” C&G §V.B supplies asymptotic-conversion context; the finite code-family control is supplied by the cited construction and local accounting.
 
-**Understanding target.** Explain how one sampled phase, one actual noisy batch, and additional independent raw-source states prepare the catalyst mixture exactly. Separate exact preparation of that mixed state from perfect preparation of the target, and account for the one-time source cost.
+<a name="m24"></a>
 
-**Dependencies and story role.** [M23](#m23), [M25](#m25), [M26](#m26). The formal catalyst becomes an operationally supplied resource.
+### M24: Fix the input count and prepare the phase label exactly
 
-**Conceptual connection.** An upper bound must account for the origin of its stored magic as well as its ongoing consumption.
+**ID and phase:** M24; narrative/innovation.
 
-**Sources.** [Exact initialization](../science/resources.md#2-exact-initialization-from-the-same-noisy-source). Watrous §§2.1.2 and 2.2.3; [batch-to-factory bridge](WATROUS_BRIDGE.md#from-a-batch-protocol-to-a-stationary-factory).
+**Central question:** How can varying batch sizes support one fixed per-round source budget?
 
-<a id="m28"></a>
+**Understanding target:** Explain output rounding to a power of two, the bounded input-to-output ratio, and padding with free registers. Identify why these choices give one sufficient constant $`K=3360`$ and an exactly preparable uniform flag, without asserting that every smaller budget is feasible. Count discarded raw copies as supplied inputs.
 
-### M28 — Bounded code-family gaps and every-accuracy achievability
+**Dependencies and story role:** M03–M04, M11, M22–M23. Adapts the batch primitive to the uniform register and input structure needed by a reusable factory.
 
-**Central question.** Why does an available code family provide logarithmic memory for every sufficiently small error?
+**Conceptual connection:** Rate statements become exact operational budgets only after integer sizes, classical randomness, and discarded inputs are accounted for.
 
-**Understanding target.** Explain why an exponential batch-error bound alone does not control gaps in the available code lengths. Use the bounded ratio of successive genera to relate the first adequate code to the requested accuracy and to the quantum, phase, and initialization costs.
+**Source pointers:** [CCZ construction](../science/cyclic_construction.md), “3. A single fixed input count and an exactly preparable flag.” C&G §§III.A and IV.A.5 supply free-ancilla and stabilizer-operation context; the rounding and constants are specified locally.
 
-**Dependencies and story role.** [M24](#m24), [M25](#m25), [M26](#m26), [M27](#m27). The construction is completed as an all-accuracy asymptotic upper bound.
+<a name="m25"></a>
 
-**Conceptual connection.** Discrete code availability must be reconciled with a continuously varying target-error parameter.
+### M25: The cyclic state returns exactly
 
-**Sources.** [Choosing a batch for every accuracy](../science/construction.md#6-choosing-a-batch-for-every-target-accuracy); [initialization cost](../science/resources.md#2-exact-initialization-from-the-same-noisy-source). Watrous §5.1.1 supplies logarithm conventions; the code-family spacing argument is supplied by the canonical construction.
+**ID and phase:** M25; narrative/innovation.
 
-<a id="m29"></a>
+**Central question:** How does the catalyst exchange stored batch outputs for fresh raw inputs without changing its marginal?
 
-### M29 — The complete resource ledger and verification limits
+**Understanding target:** Interpret each flag-conditioned summand as a combination of raw blocks and a marginal of the actual batch output. Follow ordinary emission and batch refresh, and explain why the full conditional states cycle with unchanged weights, including the flag's correlations with memory.
 
-**Central question.** Which costs and guarantees are established by the logarithmic-memory construction?
+**Dependencies and story role:** M10, M13, M22–M24. Establishes the central exact-return identity of the constructive branch.
 
-**Understanding target.** Distinguish fresh input per call, initialization, persistent quantum memory, classical phase and decoder storage, peak workspace, and execution time. Explain the periodic full-batch cost and what finite overlap, cycle, and arithmetic checks establish relative to the analytical proofs.
+**Conceptual connection:** A stationary mixture of phases converts a many-output batch protocol into a one-output reusable procedure.
 
-**Dependencies and story role.** [M11](#m11), [M21](#m21), [M27](#m27), [M28](#m28). The upper construction is assessed as a complete resource statement.
+**Source pointers:** [CCZ construction](../science/cyclic_construction.md), “4. The catalyst and the exact-return proof”; [Fang–Liu dependency](../references/RELATED_WORK.md#fangliu2026). C&G §V.C supplies catalytic context; the correlated cyclic construction is attributed to Fang and Liu.
 
-**Conceptual connection.** Constant ongoing magic consumption is compatible with growing reusable storage and growing work on wraparound calls.
+<a name="m26"></a>
 
-**Sources.** [Resource ledger](../science/resources.md#1-resource-ledger); [workspace and throughput](../science/resources.md#4-coherent-workspace-gate-count-and-throughput); [finite verification and its interpretation](../verification/README.md#interpretation). Watrous §§2.2.1 and 5.2.1 provide the ideal-channel and entropy foundations.
+### M26: Verify the factory's output and retained cost
 
-<a id="m30"></a>
+**ID and phase:** M26; narrative/innovation.
 
-### M30 — The matched memory theorem and its scope
+**Central question:** Does the cyclic procedure realize the promised factory using only the stated free operations and retained registers?
 
-**Central question.** What complete statement follows when necessity and achievability refer to the same factory model?
+**Understanding target:** Derive the emitted state's average over batch marginals and inherit accuracy from the global batch guarantee. Explain the classical flag update without a coherent non-Clifford counter. Count $`3K(m-1)+\log_2m`$ retained qubits and bound stored magic by that dimension, while distinguishing transient processing workspace.
 
-**Understanding target.** State the logarithmic minimum-memory law with a fixed permitted noisy CCZ source, a sufficient fixed input budget, physical stabilizer operations, and exact marginal return. Explain the stronger operation class of the converse, the inherited nature of the upper construction, and the limits concerning smaller budgets, approximate return, source drift, hardware noise, and timing.
+**Dependencies and story role:** M04–M07, M11, M23–M25. Completes the construction as a physically admissible upper bound in the same operational model as the converse.
 
-**Dependencies and story role.** [M13](#m13), [M20](#m20), [M21](#m21), [M22](#m22), [M28](#m28), [M29](#m29). This is the narrative phase's synthesis and the global understanding target.
+**Conceptual connection:** Exact return, output quality, and full resource accounting must hold in one implementation for an achievability claim to be meaningful.
 
-**Conceptual connection.** Constant fresh consumption and logarithmically increasing reusable quantum storage describe one matched resource tradeoff.
+**Source pointers:** [CCZ construction](../science/cyclic_construction.md), “Output accuracy,” “Every operation is free in the stated model,” and “5. Retained memory and magic resource.” C&G §§III.A, IV.A.5, and VI.C provide operation and measure context; the complete accounting is local.
 
-**Sources.** [The minimized quantity and matched law](../science/model.md#the-quantity-minimized-in-the-matching-law); [upper/lower alignment](../science/construction.md#8-relation-to-the-lower-bound); [scope of the resource law](../science/resources.md#7-boundary-of-the-matched-resource-law). Watrous §§2.2.1 and 5.2.3; [joining the learning route to the science](WATROUS_BRIDGE.md#joining-the-learning-route-to-the-science).
+<a name="m27"></a>
+
+### M27: Prepare the catalyst and identify the startup bound's provenance
+
+**ID and phase:** M27; narrative/innovation.
+
+**Central question:** Can the catalyst itself be prepared from the same noisy source, and why must that preparation consume more inputs at higher accuracy?
+
+**Understanding target:** Construct the exact cyclic state from the actual noisy batch output and additional raw blocks, with no ideal target seed or tomography requirement. Distinguish the fixed worst-case initialization budget from expected stopping cost. Explain why composing preparation with the first use already yields the logarithmic startup lower bound through ordinary purification, without using catalyst return.
+
+**Dependencies and story role:** M03, M08, M11, M22–M26. Completes source accounting and separates the inherited preparation constraint from the new retained-resource conclusion.
+
+**Conceptual connection:** Resource preparation and resource retention are different operational questions even when both have logarithmic scaling.
+
+**Source pointers:** [CCZ construction](../science/cyclic_construction.md), “6. Exact preparation and optimal source-only initialization order”; [resource costs](../science/resource_costs.md), “Preparation cost has a different provenance.” C&G §§V.A, VI.A.2, and VI.A.4 provide preparation and monotonicity background; the startup comparison uses the separately cited purification principle.
+
+<a name="m28"></a>
+
+### M28: Match the optimized retained-resource orders
+
+**ID and phase:** M28; narrative/innovation.
+
+**Central question:** In what precise regime do the converse and construction determine the optimal scaling?
+
+**Understanding target:** Combine the positive source free weight, CCZ tensor-power overlap, and constructed upper bounds to obtain logarithmic optimal order for qubits and each stated magic measure. Interpret separate infima over factories and avoid requiring a common optimizer. Retain the sufficiently weak fixed noise and sufficiently large fixed input-budget conditions.
+
+**Dependencies and story role:** M09, M11, M19–M20, M22–M27. Joins the two narrative branches into the matched scientific result.
+
+**Conceptual connection:** A universal necessary cost and one admissible construction determine an asymptotic order even when their leading constants differ.
+
+**Source pointers:** [Resource costs](../science/resource_costs.md), “Matching orders for sufficiently low-noise CCZ”; [CCZ construction](../science/cyclic_construction.md), “5. Retained memory and magic resource.” C&G §§V.B and VI.A provide operational-optimization context; the matching law follows from this project's combined arguments.
+
+<a name="m29"></a>
+
+### M29: Identify the assumptions that change the conclusion
+
+**ID and phase:** M29; narrative/innovation.
+
+**Central question:** Which nearby factory models require a different argument?
+
+**Understanding target:** Locate how approximate return modifies accumulation, how heralding changes normalization and monotonicity, and how zero or accuracy-dependent free weight changes the comparison. Distinguish exact return at one source from return on an input neighborhood, and constant fresh-input count from ordinary growing-batch distillation. Preserve the difference between marginal and joint-stream accuracy.
+
+**Dependencies and story role:** M02–M03, M08, M10–M11, M13–M20, M28. Tests the logical scope of the combined result through its actual assumptions, without claiming extensions.
+
+**Conceptual connection:** An operational theorem is specified by quantifiers, error conventions, and success conditions as well as its asymptotic formula.
+
+**Source pointers:** [Interpretation](../science/interpretation.md), “Correlations and the meaning of reuse,” “Exact return at a fixed noisy input,” “Controlled return error changes the reuse estimate,” “Heralding and source variation,” and “Scope of the optimality statement.” C&G §§V.A–V.C provide contrasting conversion settings; the boundary analysis is local.
+
+<a name="m30"></a>
+
+### M30: Synthesis of the scientific contribution
+
+**ID and phase:** M30; narrative/innovation.
+
+**Central question:** What does the complete project establish about reusable magic-state factories?
+
+**Understanding target:** Explain the connected result: constant ongoing input consumption can coexist with exact marginal reuse, while positive source free weight and tensor-power target free overlap tending to zero force growing retained magic as output error vanishes. Under exponential overlap decay, the lower bounds are logarithmic for the stated magic measures and retained memory. In the stated CCZ regime the optimal order is logarithmic. Connect that conclusion to the finite-error mechanism, the absent resource-gap requirement, the constructive witness, and the separate provenance of startup cost. Identify the unoptimized quantities and model boundaries without turning them into broader impossibility claims.
+
+**Dependencies and story role:** M12–M29. Ends the narrative phase by integrating mechanism, attainability, attribution, and interpretation into one global account.
+
+**Conceptual connection:** Reusability describes persistence under operation; precision determines how much resource the reusable device must contain.
+
+**Source pointers:** [Factory model](../science/model.md), “Scientific results and reading route” and “Attribution”; [interpretation](../science/interpretation.md), “Three costs” and “Scope of the optimality statement”; [related work](../references/RELATED_WORK.md), “What is imported and what is established here?” C&G §§III.A, V.C, and VI.A supply the unifying resource-theory framework; the scientific synthesis rests on the project's canonical proofs and cited research dependencies.

@@ -1,71 +1,94 @@
-# Catalytic Magic Memory
+# Catalytic Magic Cost
 
-A reusable magic-state factory can consume a constant number of fresh noisy inputs per output. Improving its accuracy still requires a growing stock of magic in persistent quantum memory. This project proves a logarithmic lower bound on that stored resource and derives matching CCZ memory scaling from established distillation constructions.
+**How much magic must a reusable factory retain when its output error approaches zero?** This project gives catalyst-resource and memory lower bounds for deterministic magic-state distillation with a fixed noisy source and a fixed number of fresh inputs per output. For sufficiently low-noise CCZ sources and a sufficiently large fixed input budget, an explicit construction matches the logarithmic order.
 
-For a fixed sufficiently low, nonzero noise level and a sufficiently large fixed input budget, the minimum quantum catalyst width satisfies
+A round returns the catalyst exactly on its marginal. Correlations with the output are allowed. The catalyst can be mixed and internally entangled, and its size and state can depend on the requested accuracy.
 
-```math
-q_{\min}(\epsilon)=\Theta\!\left(\log\frac{1}{\epsilon}\right).
-```
-
-Here $`\epsilon`$ is state infidelity. The factory is deterministic, uses ideal stabilizer operations, and returns its catalyst marginal exactly. Outputs may be correlated with the catalyst and with one another. All persistent quantum memory and correlated control are counted; an arbitrary amount of free classical storage is allowed.
-
-## Principal results
-
-| Result | Scope | Scientific account |
+| Resource or statement | Result | Conditions |
 |---|---|---|
-| Finite-error lower bound on stored magic | Any fresh block with a positive free-state component; arbitrary mixed catalyst | [Converse](science/converse.md) |
-| Logarithmic quantum-memory necessity | Every fixed finite noisy-input budget; computational $`T`$ and CCZ targets | [Model](science/model.md) and [converse](science/converse.md) |
-| Nonzero error floor for finite stored magic | Explicit inequality, with no input–target resource ordering assumption | [Converse](science/converse.md) |
-| Matching logarithmic CCZ memory | Fixed below-threshold depolarized source and a sufficient constant input budget | [Construction](science/construction.md) |
-| Quantum memory cannot be replaced by classical flags | Classical–quantum catalysts with unrestricted finite classical storage | [Model](science/model.md) |
-| Startup and ongoing costs | No perfect magic seed; initialization and persistent memory charged separately | [Resources](science/resources.md) |
+| Stored fidelity resource and relative entropy of magic | $`\Omega(\log(1/\varepsilon))`$ | Positive source free weight; exponentially decreasing target free overlap; fixed fresh-input count |
+| Retained catalyst qubits | $`\Omega(\log(1/\varepsilon))`$ | Same assumptions in qubit magic theory |
+| Optimal retained CCZ catalyst cost | $`\Theta(\log(1/\varepsilon))`$ for qubits and the stated magic measures | Sufficiently low fixed depolarization and sufficiently large fixed input count |
+| Source-only initialization | $`\Theta(\log(1/\varepsilon))`$ in the same CCZ regime | Deterministic preparation from the noisy source; the lower bound follows from established ordinary purification |
 
-The lower bound is the contribution developed here. The upper construction combines [Wills–Hsieh–Yamasaki batch distillation](references/related-work.md#why2025) with [Fang–Liu catalytic conversion](references/related-work.md#fl2026). The target-overlap identities are due to [Bravyi and collaborators](references/related-work.md#b2019).
+Here $`\varepsilon`$ is target infidelity. A constant fresh-input overhead can coexist with a diverging retained resource. The converse makes no assumption that the input batch is less resourceful than one target.
 
-## Why repetition reveals the memory cost
+## The finite-error converse
 
-Let the fresh input satisfy $`\chi\ge w\sigma_0`$, where $`\sigma_0`$ is free and $`w>0`$. After $`L`$ nominal reuses, the joint output has infidelity at most $`L\epsilon`$ to the product target, even when its components are correlated.
-
-The same circuit with all fresh inputs replaced by $`\sigma_0`$ has weight $`w^L`$ in a positive decomposition of the nominal experiment. Its joint error is therefore at most $`\delta_L=L\epsilon/w^L`$. In that experiment the initial catalyst is the only source of magic. A binary target test and relative-entropy monotonicity give
+Suppose the fixed source obeys $`\rho\ge p\gamma`$ for a normalized free state $`\gamma`$ and $`p>0`$. Each round consumes $`k`$ independent source copies and returns its catalyst $`\tau`$ exactly. Define squared fidelity, maximum free fidelity and target overlap by
 
 ```math
-E_R(\tau)\ge
-(1-\delta_L)L\log_2(1/f)-h_2(\delta_L),
-\qquad \delta_L\le\tfrac12,
+F(x,y)=\|\sqrt{x}\sqrt{y}\|_1^2,
+\qquad
+F_{\mathcal F}(x)=\max_{\sigma\in\mathcal F}F(x,\sigma),
+\qquad
+f_\ell=\max_{\sigma\in\mathcal F}\mathrm{Tr}(\psi^{\otimes\ell}\sigma).
 ```
 
-where $`F_{\mathrm{STAB}}(\psi^{\otimes L})=f^L`$. Choosing $`L`$ proportional to $`\log(1/\epsilon)`$ gives the lower bound. The proof uses the tensor powers of the target, without assuming additivity involving an arbitrary catalyst.
+For every integer $`\ell\ge1`$,
 
-The [closest-work comparison](references/related-work.md) explains the distinction from earlier correlated-catalysis bounds: no assumption that the fresh input contains less resource than the target is required.
+```math
+F_{\mathcal F}(\tau)\le
+\min\left\{1,\left(\sqrt{f_\ell}
++\sqrt{\ell\varepsilon p^{-k\ell}}\right)^2\right\}.
+```
+
+Exact marginal return allows repeated use. The individual accuracy guarantees then bound the joint failure probability. Replacing every fresh input by its free component gives a comparison experiment whose only initial resource is the catalyst. These steps turn output accuracy into a lower bound on retained catalyst magic.
+
+If $`f_\ell\le2^{-a\ell}`$, $`a>0`$, and $`b=\log_2(1/p)`$, then
+
+```math
+G_{\mathcal F}(\tau):=-\log_2F_{\mathcal F}(\tau)
+\ge\frac{a}{a+kb}
+\left[\log_2(1/\varepsilon)-\log_2\log_2(1/\varepsilon)\right]-O(1).
+```
+
+For T and CCZ, respectively, $`f_\ell=(\cos^2(\pi/8))^\ell`$ and $`f_\ell=(9/16)^\ell`$. Relative entropy of magic inherits this bound. A direct operator comparison gives a stronger coefficient for max-relative-entropy magic and retained qubits. No leading coefficient is claimed optimal.
 
 ## Read the science
 
-Start with the [scientific route](science/README.md), then follow the [model](science/model.md), [converse proof](science/converse.md), [attaining construction](science/construction.md), and [resource interpretation](science/resources.md). The [related-work account](references/related-work.md) identifies inherited ingredients, exact theorem pointers, and the limits of the literature comparison. Machine-readable citations are in the [bibliography](references/references.bib).
+Start with the [model and exact claims](science/model.md), then follow the converse, its resource consequences and the matching construction.
 
-The [LLM reading guide](llms.txt) maps questions to authoritative files.
+| To inspect | Read |
+|---|---|
+| Operational assumptions, accuracy and resource conventions | [Factory model](science/model.md) |
+| Exact reuse, the free-input comparison and the full finite-error proof | [Reuse converse](science/reuse_converse.md) |
+| Error floors, logarithmic bounds and preparation cost | [Resource costs](science/resource_costs.md) |
+| T/CCZ overlaps, arbitrary-catalyst multiplicativity and an explicit example without a Rényi gap | [Magic targets](science/magic_targets.md) |
+| Deterministic CCZ batch distillation, cyclic catalyst and complete retained-register accounting | [Cyclic construction](science/cyclic_construction.md) |
+| Physical interpretation, correlations and the limits of the model | [Interpretation](science/interpretation.md) |
+| Imported results and precise comparisons with earlier converses | [Related work](references/RELATED_WORK.md) and [bibliography](references/references.bib) |
+| Finite overlap reconstruction and its limits | [Verification](verification/README.md) |
+
+The [LLM reading guide](llms.txt) maps questions to the authoritative scientific files and records the distinctions that an explanation must preserve.
+
+## Relation to existing results
+
+Earlier work already proves logarithmic catalyst-resource divergence under an input-target resource-gap condition. The converse here reaches fixed-input regimes where that condition fails. An explicit noisy-T example excludes every Rényi index allowed by the compared theorem; it separates hypotheses without asserting the achievability of that particular factory.
+
+Exact marginal reuse and the cyclic construction are due to Fang and Liu. The CCZ upper bound uses the constant-rate batch construction of Wills, Hsieh and Yamasaki. Stabilizer-overlap results and ordinary-purification comparisons are also established inputs. Their roles and source editions are specified in the related-work account.
 
 ## Learn the project
 
-The [30-milestone understanding map](learning/MILESTONES.md) moves from 13 background/preliminaries milestones to 17 narrative/innovation milestones. Each phase connects local ideas into the complete model or result, with prerequisites and direct scientific source pointers.
+The single educational anchor is **Eric Chitambar and Gilad Gour, *Quantum Resource Theories* (2019)**. The [Chitambar–Gour bridge](learning/CHITAMBAR_GOUR_BRIDGE.md) gives a selective section guide, translates fidelity and resource-measure conventions, and develops the steps connecting the review's framework to this project's results. Its worked examples explain correlated-output accuracy and exact return in a two-phase catalyst cycle.
 
-The single educational anchor is John Watrous's *The Theory of Quantum Information*. The [Watrous bridge](learning/WATROUS_BRIDGE.md) identifies focused readings, translates fidelity and trace-distance conventions, and develops a two-phase catalyst example before connecting the textbook tools to the converse and construction.
+The [30-milestone map](learning/MILESTONES.md) defines a common route through the project. Its **12 background/preliminaries milestones** build the complete factory model from states, operations, accuracy and resource measures. Its **18 narrative/innovation milestones** connect the converse, its precise novelty, the attainable CCZ construction and the resulting resource interpretation. Each milestone records an understanding target, earlier dependencies, a conceptual connection and source pointers.
+
+Use the bridge alongside the map for self-directed study. The scientific pages remain the authoritative route to complete proofs and their primary research dependencies. The [LLM reading guide](llms.txt) connects both routes without assuming a particular reader's background.
 
 ## Reproduce the finite checks
 
-From the repository root, with Python 3.10 or newer:
+From the repository root, run:
 
 ```bash
-python3 verification/run_all.py
+python3 verification/check_targets.py
 ```
 
-The standard-library checks enumerate all 1,080 three-qubit stabilizer projectors, verify correlated catalyst marginal identities with exact rational matrices, reproduce the resource-gap example, and check explicit code-family parameters. See [verification and expected outputs](verification/README.md) for what each calculation establishes. The general theorem and all-accuracy scaling are analytical results.
+The script uses only Python's standard library. Exact binary linear algebra enumerates all pure stabilizer projectors on one, two and three qubits; numerical overlaps reproduce the T, T tensor T and CCZ constants. The [committed output](verification/expected_targets.json) records the results. General converses, tensor-power statements and asymptotic scaling rely on the written proofs and cited theorems.
 
-## Physical scope
+## Scope
 
-The sharp scaling concerns persistent logical quantum memory. One explicit sufficient construction uses 1,680 noisy CCZ inputs per output, with a conservative source-infidelity threshold about $`2.23\times10^{-5}`$. Its first displayed code-family member gives a padded catalyst of 206,035,200 logical qubits. These constants establish attainability of the scaling; they are not a practical factory recommendation.
-
-[Resource accounting](science/resources.md) keeps preparation, classical storage, transient workspace, and periodically executed batch circuits explicit. The claim does not optimize physical fault-tolerant qubits, circuit depth or elapsed time. Exact nominal catalyst return and deterministic processing are the operational assumptions; return only on heralded success needs a different analysis.
+The model is deterministic and requires exact catalyst marginal return. The asymptotic lower bounds fix the noisy source and the number of fresh inputs per round. The upper construction establishes retained-memory and retained-magic scaling, with explicit source-only initialization. It does not optimize gate count, transient workspace, thresholds or the constant input budget. Heralded protocols, approximate catalyst return and sources with zero free weight require separate arguments.
 
 ## Purpose and contact
 

@@ -1,0 +1,26 @@
+{
+  "CCZ": {
+    "analytic_value": 0.5625,
+    "exponent_bits": 0.8300749985576876,
+    "isotropic_subspaces": 135,
+    "maximum_overlap": 0.5624999999999999,
+    "pure_stabilizer_projectors": 1080,
+    "qubits": 3
+  },
+  "T": {
+    "analytic_value": 0.8535533905932737,
+    "exponent_bits": 0.22844669683638807,
+    "isotropic_subspaces": 3,
+    "maximum_overlap": 0.8535533905932736,
+    "pure_stabilizer_projectors": 6,
+    "qubits": 1
+  },
+  "T_tensor_T": {
+    "analytic_value": 0.7285533905932737,
+    "exponent_bits": 0.4568933936727761,
+    "isotropic_subspaces": 15,
+    "maximum_overlap": 0.7285533905932735,
+    "pure_stabilizer_projectors": 60,
+    "qubits": 2
+  }
+}
